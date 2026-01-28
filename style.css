@@ -102,3 +102,38 @@ pre[class*="language-"] {
 code[class*="language-"] {
   background: transparent !important;
 }
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #9aa0a6;
+}
+
+.token.punctuation { color: #cfcfcf; }
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #8ab4f8;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a5d6a7;
+}
+
+.token.function,
+.token.class-name {
+  color: #fdd663;
+}
+
+.token.keyword {
+  color: #ff8a65;
+}
