@@ -87,7 +87,15 @@
   <p class="details">
     Focus areas include motion tracking, signal processing, and actuator coordination.
   </p>
-
+  <h2>Software Control</h2>
+  <p>Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate using the BLE intereface
+  built into the boards through the BLE radio library. Advertisement is handled by the receiver board, with connected, disconnected, and error states
+  displayed through the onboard NeoPixel LEDs. The actual sensing of position is done with the onboard 3-axis accelerometer of the sensor board, which 
+  whose x,y,z acceleration vector is converted to pitch and roll using arctangent projections. These packets are passed over the BLE link after being smoothed 
+  with an EMA filter, alongside the grip state and send state. The grip and send states are controlled by the 2 push buttons included on the BlueFruit, and 
+  determine whether the claw is closed and the connection is live, respectively. Simply, the send state allows temporary disconnection of the arm from the 
+  sensor without closing the UART stream. The servoes are controlled using the analog out pins on the receiver board, alongside the Adafruit ServoMotor library. 
+  </p>
   <!-- Side-by-side Python code -->
   <div class="code-container">
     <!-- RECEIVER CODE -->
