@@ -12,27 +12,31 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
 
   <style>
-    /* Container for side-by-side code blocks */
+    /* Side-by-side code container */
     .code-container {
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       flex-wrap: wrap; /* stack on small screens */
       margin-top: 2rem;
     }
 
-    /* Ensure both pre and code get same dark background */
+    /* Both pre and code get same dark background */
     .code-container pre,
     .code-container pre code {
-      flex: 1 1 48%;        /* wide columns */
-      min-width: 400px;     /* prevents columns from shrinking too small */
+      flex: 1 1 48%;        /* two columns */
+      min-width: 300px;     /* don’t shrink too small */
+      box-sizing: border-box;
       overflow-x: auto;     /* horizontal scroll if needed */
       background: #0f1220 !important; /* match site background */
       color: #e6e6e6 !important;      /* off-white text */
-      padding: 1rem;
+      font-size: 0.85rem;   /* smaller font */
+      line-height: 1.4;
+      padding: 0.8rem;
       border-radius: 10px;
+      white-space: pre;     /* prevent wrapping inside code */
     }
 
-    /* Prism token colors for readability */
+    /* Prism syntax colors */
     .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #9aa0a6 !important; }
     .token.punctuation { color: #cfcfcf !important; }
     .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol { color: #8ab4f8 !important; }
@@ -40,8 +44,8 @@
     .token.function, .token.class-name { color: #fdd663 !important; }
     .token.keyword { color: #ff8a65 !important; }
 
-    /* Stack columns on smaller screens */
-    @media (max-width: 1000px) {
+    /* Stack on small screens */
+    @media (max-width: 900px) {
       .code-container pre,
       .code-container pre code {
         flex: 1 1 100%;
@@ -56,8 +60,8 @@
   <a class="back" href="index.html">Back to Home</a>
 
   <h1>Gesture-Controlled Robotic Arm</h1>
-  
-  <!-- Responsive YouTube video -->
+
+  <!-- Responsive YouTube embed -->
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe 
       src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1"
@@ -77,7 +81,7 @@
     Focus areas include motion tracking, signal processing, and actuator coordination.
   </p>
 
-  <!-- Side-by-side Python code -->
+  <!-- Side-by-side Python code blocks -->
   <div class="code-container">
     <!-- RECEIVER CODE -->
     <pre><code class="language-python">
