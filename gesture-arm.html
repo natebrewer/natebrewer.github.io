@@ -4,9 +4,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gesture-Controlled Robotic Arm</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
 
+  <!-- Your site CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Prism dark theme -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+  
+  <style>
+    /* Container for side-by-side code blocks */
+    .code-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap; /* stacks on small screens */
+      margin-top: 2rem;
+    }
+
+    .code-container pre {
+      flex: 1 1 45%;
+      overflow-x: auto;
+      background: #0f1220 !important; /* match site background */
+      color: #e6e6e6 !important;      /* off-white text */
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    /* Optional Prism token colors */
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata { color: #9aa0a6 !important; }
+
+    .token.punctuation { color: #cfcfcf !important; }
+
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.constant,
+    .token.symbol { color: #8ab4f8 !important; }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted { color: #a5d6a7 !important; }
+
+    .token.function,
+    .token.class-name { color: #fdd663 !important; }
+
+    .token.keyword { color: #ff8a65 !important; }
+
+    /* Responsive stacking for mobile */
+    @media (max-width: 800px) {
+      .code-container pre {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -34,7 +90,10 @@
     Focus areas include motion tracking, signal processing, and actuator coordination.
   </p>
 
-<pre><code class="language-python">
+  <!-- Side-by-side Python code -->
+  <div class="code-container">
+    <!-- RECEIVER CODE -->
+    <pre><code class="language-python">
 # ---- RECEIVER CODE ----
 import time
 
@@ -107,9 +166,10 @@ while True:
                 grip_servo.angle = 0
             else:
                 grip_servo.angle = 100
-  </code></pre>
+    </code></pre>
 
-<pre><code class="language-python">
+    <!-- SENSOR CODE -->
+    <pre><code class="language-python">
 #### SENSOR CODE ####
 
 import time
@@ -175,9 +235,12 @@ while True:
             pass
 
         time.sleep(0.15)
-  </code></pre>
+    </code></pre>
+  </div>
+
 </main>
 
+<!-- Prism JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 </body>
