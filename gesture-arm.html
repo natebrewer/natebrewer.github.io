@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gesture-Controlled Robotic Arm</title>
 
-  <!-- Site CSS -->
+  <!-- Your site CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Prism CSS (default, no dark theme) -->
+  <!-- Prism JS only (default CSS ignored for background) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet"/>
-
+  
   <style>
-    /* Side-by-side container */
+    /* Container for side-by-side code blocks */
     .code-container {
       display: flex;
       gap: 1rem;
@@ -20,35 +20,38 @@
       margin-top: 2rem;
     }
 
-    /* Only style <pre> for background/text/padding */
+    /* Style pre blocks to match site background */
     .code-container pre {
-      flex: 1 1 48%;        /* two columns */
-      min-width: 300px;     /* don’t shrink too small */
+      flex: 1 1 48%;
+      min-width: 300px;
       box-sizing: border-box;
-      overflow-x: auto;     /* horizontal scroll if needed */
-      background: #0f1220 !important; /* site background */
+      overflow-x: auto;
+      background: #0e0e0e !important; /* site background */
       color: #e6e6e6 !important;      /* off-white text */
-      font-size: 0.85rem;   /* smaller font */
+      font-size: 0.85rem;
       line-height: 1.4;
       padding: 1rem;
       border-radius: 10px;
-      white-space: pre;     /* preserve formatting */
-      margin: 0;            /* remove default margin */
+      white-space: pre;
+      margin: 0;
     }
 
-    /* Force code inside pre to inherit color and font */
+    /* Ensure code inside pre inherits the same background & color */
     .code-container pre code {
-      color: inherit;
+      background: inherit !important;
+      color: inherit !important;
+      display: block;
+      white-space: pre;
       font-family: inherit;
     }
 
-    /* Optional: Prism token colors (subtle) */
+    /* Optional Prism token colors */
     .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #a0a0a0 !important; }
     .token.keyword { color: #ff8a65 !important; }
     .token.function, .token.class-name { color: #fdd663 !important; }
     .token.string, .token.char { color: #a5d6a7 !important; }
 
-    /* Stack on smaller screens */
+    /* Stack columns on smaller screens */
     @media (max-width: 900px) {
       .code-container pre {
         flex: 1 1 100%;
