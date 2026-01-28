@@ -1,35 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gesture-Controlled Robotic Arm</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesture-Controlled Robotic Arm</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet"/>
 </head>
+
 <body>
 <main>
-<a class="back" href="index.html">Back to Home</a>
+  <a class="back" href="index.html">Back to Home</a>
 
-
-<h1>Gesture-Controlled Robotic Arm</h1>
+  <h1>Gesture-Controlled Robotic Arm</h1>
   
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1"
-    style="position: absolute; top:0; left:0; width:100%; height:100%;"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
-</div>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe 
+      src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1"
+      style="position: absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<p>
-A two-DOF robotic arm controlled through hand gestures. Utilizes a 3-axis accelerometer to calculate pitch and roll position from glove-mounted sensor.
-</p>
+  <p>
+    A two-DOF robotic arm controlled through hand gestures. Utilizes a 3-axis accelerometer 
+    to calculate pitch and roll position from glove-mounted sensor.
+  </p>
 
+  <p class="details">
+    Focus areas include motion tracking, signal processing, and actuator coordination.
+  </p>
 
-<p class="details">
-Focus areas include motion tracking, signal processing, and actuator coordination.
-</p>
+  <pre><code class="language-python">
+# ---- RECEIVER CODE ----
+import time
+
+from adafruit_ble import BLERadio
+from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
+from adafruit_ble.services.nordic import UARTService
+
+from adafruit_circuitplayground import cp
+
+ble = BLERadio()
+
+uart_connection = None
+uart = None
+buffer = b""
+
+rollServoPWM = pwmio.PWMOut(board.A3, frequency=50)
+pitchServoPWM = pwmio.PWMOut(board.A2, frequency=50)
+gripServoPWM = pwmio.PWMOut(board.A1, frequency=50)
+
+roll_servo = servo.Servo(rollServoPWM)
+pitch_servo = servo.Servo(pitchServoPWM)
+grip_servo = servo.Servo(gripServoPWM)
+
+while True:
+    if uart is None or uart_connection is None or uart_connection.connected == False:
+        cp.pixels.fill((20,0,0))
+
+        uart_connection = None
+        uart = None
+
+        for adv in ble.start_scan(ProvideServicesAdvertisement):
+            if UARTService in adv.services:
+                try:
+                    print("connecting")
+                    uart_connection = ble.connect(adv)
+                    uart = uart_connection[UARTService]
+                    print("connected")
+                except Exception:
+                    print("something broke")
+                    cp.pixels.fill((20,0,20))
+                    time.sleep(.25)
+                    cp.pixels.fill((0,0,0))
+
+                    uart_connection = None
+                    uart = None
+                break
+
+        ble.stop_scan()
+        if uart is None:
+            continue
+
+    cp.pixels.fill((0,20,0))
+    cp.play_tone(440, .25)
+    cp.play_tone(540, .25)
+    cp.play_tone(620, .25)
+
+    while uart_connection and uart_connection.connected:
+        data = uart.read(16)
+        buffer += data
+
+        while b"\n" in buffer:
+            line, buffer = buffer.split(b"\n", 1)
+            text = line.decode()
+            roll, pitch, grip = text.split(",")
+
+            roll_servo.angle = int(180 - roll)
+            pitch_servo.angle = int(pitch)
+
+            if grip == " True":
+                grip_servo.angle = 0
+            else:
+                grip_servo.angle = 100
+  </code></pre>
+
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 </body>
 </html>
