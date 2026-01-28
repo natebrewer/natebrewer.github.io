@@ -20,8 +20,10 @@
       margin-top: 2rem;
     }
 
-    .code-container pre {
-      flex: 1 1 48%;        /* wider columns */
+    /* Ensure both pre and code get same dark background */
+    .code-container pre,
+    .code-container pre code {
+      flex: 1 1 48%;        /* wide columns */
       min-width: 400px;     /* prevents columns from shrinking too small */
       overflow-x: auto;     /* horizontal scroll if needed */
       background: #0f1220 !important; /* match site background */
@@ -38,9 +40,10 @@
     .token.function, .token.class-name { color: #fdd663 !important; }
     .token.keyword { color: #ff8a65 !important; }
 
-    /* Responsive: stack columns on smaller screens */
+    /* Stack columns on smaller screens */
     @media (max-width: 1000px) {
-      .code-container pre {
+      .code-container pre,
+      .code-container pre code {
         flex: 1 1 100%;
         min-width: 100%;
       }
@@ -54,6 +57,7 @@
 
   <h1>Gesture-Controlled Robotic Arm</h1>
   
+  <!-- Responsive YouTube video -->
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
     <iframe 
       src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1"
