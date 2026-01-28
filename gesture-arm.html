@@ -34,7 +34,7 @@
     Focus areas include motion tracking, signal processing, and actuator coordination.
   </p>
 
-  <pre><code class="language-python">
+<pre><code class="language-python">
 # ---- RECEIVER CODE ----
 import time
 
@@ -109,6 +109,73 @@ while True:
                 grip_servo.angle = 100
   </code></pre>
 
+<pre><code class="language-python">
+#### SENSOR CODE ####
+
+import time
+from adafruit_circuitplayground import cp
+
+from adafruit_ble import BLERadio
+from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
+from adafruit_ble.services.nordic import UARTService
+import math
+
+ble = BLERadio()
+uart = UARTService()
+advertisement = ProvideServicesAdvertisement(uart)
+
+ble.start_advertising(advertisement)
+cp.pixels.fill((20,0,0))
+
+# Initial values #
+pitch_filtered = 0
+roll_filtered = 0
+
+gripBoolean = False
+alpha = .9
+while True:
+    while ble.connected == False:
+        cp.pixels.fill((20,0,0))
+        time.sleep(0.1)
+        print("Not connected")
+
+    cp.pixels.fill((0,10,0))
+    cp.play_tone(440, .25)
+    cp.play_tone(540, .25)
+    cp.play_tone(620, .25)
+    while ble.connected:
+        ax, ay, az = cp.acceleration
+
+        pitch = 180* ((math.atan2(ay, math.sqrt(ax**2 + az**2)))/3.1415)
+        roll = 180* ((math.atan2(ax, math.sqrt(ay**2 + az**2)))/3.1415)
+
+        pitch_filtered = alpha * pitch + (1 - alpha) * pitch_filtered
+        roll_filtered  = alpha * roll + (1 - alpha) * roll_filtered
+
+        pitch = pitch_filtered
+        roll  = roll_filtered
+
+        pitch = math.floor(pitch)+90
+        roll = math.floor(roll)+90
+        if cp.button_a:
+            gripBoolean = True
+        else:
+            gripBoolean = False
+        if cp.button_b:
+            sendBool = False
+            cp.pixels.fill((20,20,20))
+        else:
+            sendBool = True
+            cp.pixels.fill((0,20,0))
+
+        msg = f"{roll},{pitch}, {gripBoolean}\n"
+        if sendBool:
+            uart.write(msg.encode("utf-8"))
+        else:
+            pass
+
+        time.sleep(0.15)
+  </code></pre>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
