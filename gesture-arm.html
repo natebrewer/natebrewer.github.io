@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gesture-Controlled Robotic Arm</title>
 
-  <!-- Your site CSS -->
+  <!-- Site CSS -->
   <link rel="stylesheet" href="style.css" />
 
   <!-- Prism dark theme -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
 
   <style>
-    /* Side-by-side code container */
+    /* Side-by-side container */
     .code-container {
       display: flex;
       gap: 1rem;
@@ -20,23 +20,23 @@
       margin-top: 2rem;
     }
 
-    /* Both pre and code get same dark background */
-    .code-container pre,
-    .code-container pre code {
+    /* Only style <pre>, not <code> */
+    .code-container pre {
       flex: 1 1 48%;        /* two columns */
       min-width: 300px;     /* don’t shrink too small */
       box-sizing: border-box;
       overflow-x: auto;     /* horizontal scroll if needed */
-      background: #0f1220 !important; /* match site background */
+      background: #0f1220 !important; /* dark site background */
       color: #e6e6e6 !important;      /* off-white text */
       font-size: 0.85rem;   /* smaller font */
       line-height: 1.4;
-      padding: 0.8rem;
+      padding: 1rem;
       border-radius: 10px;
-      white-space: pre;     /* prevent wrapping inside code */
+      white-space: pre;     /* preserve formatting */
+      margin: 0;            /* remove default margin that can break flex */
     }
 
-    /* Prism syntax colors */
+    /* Prism token colors for readability */
     .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #9aa0a6 !important; }
     .token.punctuation { color: #cfcfcf !important; }
     .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol { color: #8ab4f8 !important; }
@@ -44,10 +44,9 @@
     .token.function, .token.class-name { color: #fdd663 !important; }
     .token.keyword { color: #ff8a65 !important; }
 
-    /* Stack on small screens */
+    /* Stack on smaller screens */
     @media (max-width: 900px) {
-      .code-container pre,
-      .code-container pre code {
+      .code-container pre {
         flex: 1 1 100%;
         min-width: 100%;
       }
@@ -81,7 +80,7 @@
     Focus areas include motion tracking, signal processing, and actuator coordination.
   </p>
 
-  <!-- Side-by-side Python code blocks -->
+  <!-- Side-by-side Python code -->
   <div class="code-container">
     <!-- RECEIVER CODE -->
     <pre><code class="language-python">
@@ -95,7 +94,6 @@ from adafruit_ble.services.nordic import UARTService
 from adafruit_circuitplayground import cp
 
 ble = BLERadio()
-
 uart_connection = None
 uart = None
 buffer = b""
@@ -162,7 +160,6 @@ while True:
     <!-- SENSOR CODE -->
     <pre><code class="language-python">
 #### SENSOR CODE ####
-
 import time
 from adafruit_circuitplayground import cp
 
@@ -178,12 +175,11 @@ advertisement = ProvideServicesAdvertisement(uart)
 ble.start_advertising(advertisement)
 cp.pixels.fill((20,0,0))
 
-# Initial values #
 pitch_filtered = 0
 roll_filtered = 0
-
 gripBoolean = False
 alpha = .9
+
 while True:
     while ble.connected == False:
         cp.pixels.fill((20,0,0))
@@ -194,6 +190,7 @@ while True:
     cp.play_tone(440, .25)
     cp.play_tone(540, .25)
     cp.play_tone(620, .25)
+
     while ble.connected:
         ax, ay, az = cp.acceleration
 
@@ -203,15 +200,14 @@ while True:
         pitch_filtered = alpha * pitch + (1 - alpha) * pitch_filtered
         roll_filtered  = alpha * roll + (1 - alpha) * roll_filtered
 
-        pitch = pitch_filtered
-        roll  = roll_filtered
-
         pitch = math.floor(pitch)+90
         roll = math.floor(roll)+90
+
         if cp.button_a:
             gripBoolean = True
         else:
             gripBoolean = False
+
         if cp.button_b:
             sendBool = False
             cp.pixels.fill((20,20,20))
