@@ -8,8 +8,8 @@
   <!-- Site CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Prism dark theme -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+  <!-- Prism CSS (default, no dark theme) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet"/>
 
   <style>
     /* Side-by-side container */
@@ -20,29 +20,33 @@
       margin-top: 2rem;
     }
 
-    /* Only style <pre>, not <code> */
+    /* Only style <pre> for background/text/padding */
     .code-container pre {
       flex: 1 1 48%;        /* two columns */
       min-width: 300px;     /* don’t shrink too small */
       box-sizing: border-box;
       overflow-x: auto;     /* horizontal scroll if needed */
-      background: #0f1220 !important; /* dark site background */
+      background: #0f1220 !important; /* site background */
       color: #e6e6e6 !important;      /* off-white text */
       font-size: 0.85rem;   /* smaller font */
       line-height: 1.4;
       padding: 1rem;
       border-radius: 10px;
       white-space: pre;     /* preserve formatting */
-      margin: 0;            /* remove default margin that can break flex */
+      margin: 0;            /* remove default margin */
     }
 
-    /* Prism token colors for readability */
-    .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #9aa0a6 !important; }
-    .token.punctuation { color: #cfcfcf !important; }
-    .token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol { color: #8ab4f8 !important; }
-    .token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted { color: #a5d6a7 !important; }
-    .token.function, .token.class-name { color: #fdd663 !important; }
+    /* Force code inside pre to inherit color and font */
+    .code-container pre code {
+      color: inherit;
+      font-family: inherit;
+    }
+
+    /* Optional: Prism token colors (subtle) */
+    .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #a0a0a0 !important; }
     .token.keyword { color: #ff8a65 !important; }
+    .token.function, .token.class-name { color: #fdd663 !important; }
+    .token.string, .token.char { color: #a5d6a7 !important; }
 
     /* Stack on smaller screens */
     @media (max-width: 900px) {
@@ -86,11 +90,9 @@
     <pre><code class="language-python">
 # ---- RECEIVER CODE ----
 import time
-
 from adafruit_ble import BLERadio
 from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
 from adafruit_ble.services.nordic import UARTService
-
 from adafruit_circuitplayground import cp
 
 ble = BLERadio()
@@ -109,27 +111,20 @@ grip_servo = servo.Servo(gripServoPWM)
 while True:
     if uart is None or uart_connection is None or uart_connection.connected == False:
         cp.pixels.fill((20,0,0))
-
         uart_connection = None
         uart = None
-
         for adv in ble.start_scan(ProvideServicesAdvertisement):
             if UARTService in adv.services:
                 try:
-                    print("connecting")
                     uart_connection = ble.connect(adv)
                     uart = uart_connection[UARTService]
-                    print("connected")
                 except Exception:
-                    print("something broke")
                     cp.pixels.fill((20,0,20))
                     time.sleep(.25)
                     cp.pixels.fill((0,0,0))
-
                     uart_connection = None
                     uart = None
                 break
-
         ble.stop_scan()
         if uart is None:
             continue
@@ -142,15 +137,12 @@ while True:
     while uart_connection and uart_connection.connected:
         data = uart.read(16)
         buffer += data
-
         while b"\n" in buffer:
             line, buffer = buffer.split(b"\n", 1)
             text = line.decode()
             roll, pitch, grip = text.split(",")
-
             roll_servo.angle = int(180 - roll)
             pitch_servo.angle = int(pitch)
-
             if grip == " True":
                 grip_servo.angle = 0
             else:
@@ -162,7 +154,6 @@ while True:
 #### SENSOR CODE ####
 import time
 from adafruit_circuitplayground import cp
-
 from adafruit_ble import BLERadio
 from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
 from adafruit_ble.services.nordic import UARTService
@@ -193,13 +184,10 @@ while True:
 
     while ble.connected:
         ax, ay, az = cp.acceleration
-
         pitch = 180* ((math.atan2(ay, math.sqrt(ax**2 + az**2)))/3.1415)
         roll = 180* ((math.atan2(ax, math.sqrt(ay**2 + az**2)))/3.1415)
-
         pitch_filtered = alpha * pitch + (1 - alpha) * pitch_filtered
         roll_filtered  = alpha * roll + (1 - alpha) * roll_filtered
-
         pitch = math.floor(pitch)+90
         roll = math.floor(roll)+90
 
