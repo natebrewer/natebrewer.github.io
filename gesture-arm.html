@@ -1,108 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gesture-Controlled Robotic Arm</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesture-Controlled Robotic Arm</title>
 
-<link rel="stylesheet" href="style.css">
+  <!-- Your site CSS -->
+  <link rel="stylesheet" href="style.css" />
 
-<!-- Prism syntax highlighting -->
-<link href="https://unpkg.com/prismjs-themes@2.0.0/dist/prism-vsc-dark-plus.min.css" rel="stylesheet"/>
+  <!-- Prism syntax highlighting -->
+  <link rel="stylesheet" href="https://unpkg.com/prismjs-themes@2.0.0/dist/prism-vsc-dark-plus.min.css"/>
 
-<style>
-body {
-  background: #0e0e0e;
-  color: #e6e6e6;
-  font-family: Helvetica, sans-serif;
-}
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #e6e6e6;
+      font-family: sans-serif;
+    }
 
-a.back {
-  color: #e6e6e6;
-  text-decoration: none;
-  margin-bottom: 1rem;
-  display: inline-block;
-}
+    .code-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
 
-a.back:hover { text-decoration: underline; }
+    .code-wrapper {
+      flex: 1 1 48%;
+      min-width: 300px;
+      position: relative;
+    }
 
-/* Side-by-side code container */
-.code-container {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
+    .code-wrapper pre {
+      background: #0e0e0e !important;
+      color: #e6e6e6 !important;
+      padding: 1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin: 0;
+    }
 
-.code-block {
-  flex: 1 1 48%;
-  min-width: 300px;
-  position: relative;
-}
+    .code-wrapper pre code {
+      display: block;
+      white-space: pre;
+      font-family: "Helvetica", monospace;
+      background: inherit !important;
+      color: inherit !important;
+    }
 
-.code-block pre {
-  margin: 0;
-  padding: 1rem;
-  border-radius: 10px;
-  overflow-x: auto;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  background: #0e0e0e !important;
-}
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      background: #1a1a1a;
+      color: #eee;
+      border-radius: 6px;
+      border: 1px solid #333;
+    }
 
-/* Copy button */
-.copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 0.8rem;
-  padding: 4px 8px;
-  cursor: pointer;
-  background: #1a1a1a;
-  color: #eee;
-  border-radius: 6px;
-  border: 1px solid #333;
-}
+    /* Optional Prism token colors */
+    .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #a0a0a0 !important; }
+    .token.keyword { color: #ff8a65 !important; }
+    .token.function, .token.class-name { color: #fdd663 !important; }
+    .token.string, .token.char { color: #a5d6a7 !important; }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .code-block { flex: 1 1 100%; min-width: 100%; }
-}
-</style>
+    @media (max-width: 900px) {
+      .code-wrapper {
+        flex: 1 1 100%;
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
 <main>
-<a class="back" href="index.html">Back to Home</a>
+  <a class="back" href="index.html">Back to Home</a>
 
-<h1>Gesture-Controlled Robotic Arm</h1>
+  <h1>Gesture-Controlled Robotic Arm</h1>
 
-<!-- Responsive YouTube embed -->
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1&loop=1&playlist=ejnQmsR037A"
-    style="position: absolute; top:0; left:0; width:100%; height:100%;"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
+  <!-- Responsive YouTube embed -->
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe 
+      src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1&loop=1&playlist=ejnQmsR037A"
+      style="position: absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<p>
-A two-DOF robotic arm controlled through hand gestures. Utilizes a 3-axis accelerometer 
-to calculate pitch and roll position from glove-mounted sensor.
-</p>
+  <p>
+    A two-DOF robotic arm controlled through hand gestures. Utilizes a 3-axis accelerometer 
+    to calculate pitch and roll position from glove-mounted sensor.
+  </p>
 
-<h2>Software Control</h2>
-<p>
-Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate over BLE.
-</p>
+  <h2>Software Control</h2>
+  <p>
+    Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate using the BLE interface.
+    The receiver handles connection, disconnection, and error states with the onboard NeoPixel LEDs. The sensor reads pitch and roll
+    from the onboard accelerometer and sends packets over BLE, including grip state controlled by the buttons.
+  </p>
 
-<div class="code-container">
-
-  <!-- RECEIVER CODE -->
-  <div class="code-block">
-    <button class="copy-btn">Copy</button>
-    <pre><code class="language-python">
+  <!-- Side-by-side Python code blocks -->
+  <div class="code-container">
+    <!-- RECEIVER CODE -->
+    <div class="code-wrapper">
+      <button class="copy-btn">Copy</button>
+      <pre class="language-python"><code>
 # ---- RECEIVER CODE ----
 import time
 from adafruit_ble import BLERadio
@@ -162,13 +172,13 @@ while True:
                 grip_servo.angle = 0
             else:
                 grip_servo.angle = 100
-    </code></pre>
-  </div>
+      </code></pre>
+    </div>
 
-  <!-- SENSOR CODE -->
-  <div class="code-block">
-    <button class="copy-btn">Copy</button>
-    <pre><code class="language-python">
+    <!-- SENSOR CODE -->
+    <div class="code-wrapper">
+      <button class="copy-btn">Copy</button>
+      <pre class="language-python"><code>
 #### SENSOR CODE ####
 import time
 from adafruit_circuitplayground import cp
@@ -226,31 +236,28 @@ while True:
             uart.write(msg.encode("utf-8"))
         else:
             pass
-    </code></pre>
+      </code></pre>
+    </div>
   </div>
 
-</div>
-
-<p class="details"><i>Scroll right in each column to see full code</i></p>
-
+  <p class="details"><i>Scroll right in each column to see full code</i></p>
 </main>
 
 <!-- Prism JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 
-<!-- Copy button JS -->
+<!-- Copy code JS -->
 <script>
 document.querySelectorAll(".copy-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    const code = btn.nextElementSibling.innerText;
-    navigator.clipboard.writeText(code);
+    const codeBlock = btn.parentElement.querySelector("code");
+    navigator.clipboard.writeText(codeBlock.innerText);
     const original = btn.innerText;
     btn.innerText = "Copied!";
     setTimeout(() => btn.innerText = original, 1200);
   });
 });
 </script>
-
 </body>
 </html>
