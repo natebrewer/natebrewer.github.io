@@ -113,7 +113,7 @@
     <div class="code-wrapper">
       <button class="copy-btn">Copy</button>
       <pre class="language-python"><code>
-# ---- RECEIVER CODE ----
+
 import time
 from adafruit_ble import BLERadio
 from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
@@ -179,7 +179,7 @@ while True:
     <div class="code-wrapper">
       <button class="copy-btn">Copy</button>
       <pre class="language-python"><code>
-#### SENSOR CODE ####
+
 import time
 from adafruit_circuitplayground import cp
 from adafruit_ble import BLERadio
@@ -214,8 +214,10 @@ while True:
         ax, ay, az = cp.acceleration
         pitch = 180* ((math.atan2(ay, math.sqrt(ax**2 + az**2)))/3.1415)
         roll = 180* ((math.atan2(ax, math.sqrt(ay**2 + az**2)))/3.1415)
+       
         pitch_filtered = alpha * pitch + (1 - alpha) * pitch_filtered
         roll_filtered  = alpha * roll + (1 - alpha) * roll_filtered
+       
         pitch = math.floor(pitch)+90
         roll = math.floor(roll)+90
 
