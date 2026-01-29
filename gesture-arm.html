@@ -93,9 +93,13 @@
   determine whether the claw is closed and the connection is live, respectively. Simply, the send state allows temporary disconnection of the arm from the 
   sensor without closing the UART stream. The servoes are controlled using the analog out pins on the receiver board, alongside the Adafruit ServoMotor library. 
   </p>
+
+
   <!-- Side-by-side Python code -->
-  <div class="code-container">
-    <!-- RECEIVER CODE -->
+<div class="code-container">
+  <!-- RECEIVER CODE -->
+  <div class="code-block">
+    <button class="copy-btn">Copy</button>
     <pre><code class="language-python">
 # ---- RECEIVER CODE ----
 import time
@@ -157,8 +161,11 @@ while True:
             else:
                 grip_servo.angle = 100
     </code></pre>
+  </div>
 
-    <!-- SENSOR CODE -->
+  <!-- SENSOR CODE -->
+  <div class="code-block">
+    <button class="copy-btn">Copy</button>
     <pre><code class="language-python">
 #### SENSOR CODE ####
 import time
@@ -221,6 +228,7 @@ while True:
         time.sleep(0.15)
     </code></pre>
   </div>
+</div>
 
  <p class="details">
     <i> Scroll right in each column to see full code</i>
