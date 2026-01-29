@@ -40,5 +40,17 @@ pitch.oninput = updateArm;
 grip.oninput = updateArm;
 updateArm();
 </script>
+
+<script>
+document.querySelectorAll(".copy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const code = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code);
+    const original = btn.innerText;
+    btn.innerText = "Copied!";
+    setTimeout(() => btn.innerText = original, 1200);
+  });
+});
+</script>
 </body>
 </html>
