@@ -1,235 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gesture-Controlled Robotic Arm</title>
-
-  <!-- Your site CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Prism syntax highlighting -->
-  <link rel="stylesheet" href="https://unpkg.com/prismjs-themes@2.0.0/dist/prism-vsc-dark-plus.min.css"/>
-
-  <style>
-    /* Container for side-by-side code blocks */
-    .code-container {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .code-container pre {
-      flex: 1 1 48%;
-      min-width: 300px;
-      background: #0e0e0e !important; /* match site background */
-      color: #e6e6e6 !important;
-      position: relative; /* for copy button */
-      padding: 1rem;
-      border-radius: 10px;
-      overflow-x: auto;
-      font-size: 0.85rem;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .code-container pre code {
-      background: inherit !important;
-      color: inherit !important;
-      display: block;
-      white-space: pre;
-      font-family: "Helvetica", monospace;
-    }
-
-    /* Copy button styling */
-    .copy-btn {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      font-size: 0.8rem;
-      padding: 4px 8px;
-      cursor: pointer;
-      background: #1a1a1a;
-      color: #eee;
-      border-radius: 6px;
-      border: 1px solid #333;
-    }
-
-    /* Optional Prism token colors */
-    .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #a0a0a0 !important; }
-    .token.keyword { color: #ff8a65 !important; }
-    .token.function, .token.class-name { color: #fdd663 !important; }
-    .token.string, .token.char { color: #a5d6a7 !important; }
-
-    @media (max-width: 900px) {
-      .code-container pre {
-        flex: 1 1 100%;
-        min-width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nathan Brewer | Projects</title>
+<link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 <main>
-  <a class="back" href="index.html">Back to Home</a>
+<h1>Nathan Brewer</h1>
+<p class="subtitle">Robotics & Engineering Projects</p>
 
-  <h1>Gesture-Controlled Robotic Arm</h1>
 
-  <!-- Responsive YouTube embed -->
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-    <iframe 
-      src="https://www.youtube.com/embed/ejnQmsR037A?autoplay=1&mute=1&loop=1&playlist=ejnQmsR037A"
-      style="position: absolute; top:0; left:0; width:100%; height:100%;"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <p>
-    A two-DOF robotic arm controlled through hand gestures. Utilizes a 3-axis accelerometer 
-    to calculate pitch and roll position from glove-mounted sensor.
-  </p>
-
-  <h2>Software Control</h2>
-  <p>
-    Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate using the BLE interface.
-    The receiver handles connection, disconnection, and error states with the onboard NeoPixel LEDs. The sensor reads pitch and roll
-    from the onboard accelerometer and sends packets over BLE, including grip state controlled by the buttons.
-  </p>
-
-  <!-- Side-by-side Python code blocks -->
-  <div class="code-container">
-    <!-- RECEIVER CODE -->
-    <pre class="language-python">
-      <button class="copy-btn">Copy</button>
-# ---- RECEIVER CODE ----
-import time
-from adafruit_ble import BLERadio
-from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
-from adafruit_ble.services.nordic import UARTService
-from adafruit_circuitplayground import cp
-
-ble = BLERadio()
-uart_connection = None
-uart = None
-buffer = b""
-
-rollServoPWM = pwmio.PWMOut(board.A3, frequency=50)
-pitchServoPWM = pwmio.PWMOut(board.A2, frequency=50)
-gripServoPWM = pwmio.PWMOut(board.A1, frequency=50)
-
-roll_servo = servo.Servo(rollServoPWM)
-pitch_servo = servo.Servo(pitchServoPWM)
-grip_servo = servo.Servo(gripServoPWM)
-
-while True:
-    if uart is None or uart_connection is None or uart_connection.connected == False:
-        cp.pixels.fill((20,0,0))
-        uart_connection = None
-        uart = None
-        for adv in ble.start_scan(ProvideServicesAdvertisement):
-            if UARTService in adv.services:
-                try:
-                    uart_connection = ble.connect(adv)
-                    uart = uart_connection[UARTService]
-                except Exception:
-                    cp.pixels.fill((20,0,20))
-                    time.sleep(.25)
-                    cp.pixels.fill((0,0,0))
-                    uart_connection = None
-                    uart = None
-                break
-        ble.stop_scan()
-        if uart is None:
-            continue
-
-    cp.pixels.fill((0,20,0))
-    cp.play_tone(440, .25)
-    cp.play_tone(540, .25)
-    cp.play_tone(620, .25)
-
-    while uart_connection and uart_connection.connected:
-        data = uart.read(16)
-        buffer += data
-        while b"\n" in buffer:
-            line, buffer = buffer.split(b"\n", 1)
-            text = line.decode()
-            roll, pitch, grip = text.split(",")
-            roll_servo.angle = int(180 - roll)
-            pitch_servo.angle = int(pitch)
-            if grip == " True":
-                grip_servo.angle = 0
-            else:
-                grip_servo.angle = 100
-    </pre>
-
-    <!-- SENSOR CODE -->
-    <pre class="language-python">
-      <button class="copy-btn">Copy</button>
-#### SENSOR CODE ####
-import time
-from adafruit_circuitplayground import cp
-from adafruit_ble import BLERadio
-from adafruit_ble.advertising.standard import ProvideServicesAdvertisement
-from adafruit_ble.services.nordic import UARTService
-import math
-
-ble = BLERadio()
-uart = UARTService()
-advertisement = ProvideServicesAdvertisement(uart)
-
-ble.start_advertising(advertisement)
-cp.pixels.fill((20,0,0))
-
-pitch_filtered = 0
-roll_filtered = 0
-gripBoolean = False
-alpha = .9
-
-while True:
-    while ble.connected == False:
-        cp.pixels.fill((20,0,0))
-        time.sleep(0.1)
-        print("Not connected")
-
-    cp.pixels.fill((0,10,0))
-    cp.play_tone(440, .25)
-    cp.play_tone(540, .25)
-    cp.play_tone(620, .25)
-
-    while ble.connected:
-        ax, ay, az = cp.acceleration
-        pitch = 180* ((math.atan2(ay, math.sqrt(ax**2 + az**2)))/3.1415)
-        roll = 180* ((math.atan2(ax, math.sqrt(ay**2 + az**2)))/3.1415)
-        pitch_filtered = alpha * pitch + (1 - alpha) * pitch_filtered
-        roll_filtered  = alpha * roll + (1 - alpha) * roll_filtered
-        pitch = math.floor(pitch)+90
-        roll = math.floor(roll)+90
-
-        if cp.button_a:
-            gripBoolean = True
-        else:
-            gripBoolean = False
-
-        if cp.button_b:
-            sendBool = False
-            cp.pixels.fill((20,20,20))
-        else:
-            sendBool = True
-            cp.pixels.fill((0,20,0))
-
-        msg = f"{roll},{pitch}, {gripBoolean}\n"
-        if sendBool:
-            uart.write(msg.encode("utf-8"))
-        else:
-            pass
-
-        time.sleep(0.15)
-    </pre>
-  </div>
-
-  <p class="details"><i>Scroll right in each column to see full code</i></p>
+<nav>
+<ul>
+<li><a href="about.html">About Me</a></li>
+<li><a href="gesture-arm.html">Gesture-Controlled Robotic Arm</a></li>
+<li><a href="barnacle.html">Robotics Barnacle Nauplius Model</a></li>
+<li><a href="battlebot.html">Antweight BattleBot</a></li>
+</ul>
+</nav>
 </main>
+
+<script>
+const roll = document.getElementById("roll");
+const pitch = document.getElementById("pitch");
+const grip = document.getElementById("grip");
+
+const upper = document.getElementById("upper");
+const lower = document.getElementById("lower");
+
+function updateArm() {
+  upper.style.transform = `rotate(${pitch.value - 90}deg)`;
+  lower.style.transform = `rotate(${roll.value - 90}deg) scaleX(${grip.value/50})`;
+}
+
+roll.oninput = updateArm;
+pitch.oninput = updateArm;
+grip.oninput = updateArm;
+updateArm();
+</script>
+
+<script>
+document.querySelectorAll(".copy-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const code = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code);
+    const original = btn.innerText;
+    btn.innerText = "Copied!";
+    setTimeout(() => btn.innerText = original, 1200);
+  });
+});
+</script>
+</body>
+</html>
