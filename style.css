@@ -103,3 +103,36 @@ code[class*="language-"] {
   background: transparent !important;
 }
 
+.arm {
+  margin: 40px auto;
+  width: 200px;
+  height: 200px;
+}
+
+.base {
+  width: 20px;
+  height: 80px;
+  background: #888;
+  margin: auto;
+  transform-origin: bottom;
+}
+
+.upper {
+  width: 120px;
+  height: 12px;
+  background: #aaa;
+  transform-origin: left center;
+}
+
+.lower {
+  width: 80px;
+  height: 10px;
+  background: #ccc;
+  margin-left: 120px;
+  transform-origin: left center;
+}
+
+.arm-ui input {
+  width: 200px;
+}
+
