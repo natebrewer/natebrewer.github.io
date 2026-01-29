@@ -224,7 +224,21 @@ while True:
         time.sleep(0.15)
     </code></pre>
   </div>
+<h2>Arm Simulator</h2>
 
+<div class="arm-ui">
+  Roll <input type="range" id="roll" min="0" max="180" value="90"><br>
+  Pitch <input type="range" id="pitch" min="0" max="180" value="90"><br>
+  Grip <input type="range" id="grip" min="0" max="100" value="50">
+</div>
+
+<div class="arm">
+  <div class="base">
+    <div class="upper" id="upper">
+      <div class="lower" id="lower"></div>
+    </div>
+  </div>
+</div>
 </main>
 
 <!-- Prism JS -->
