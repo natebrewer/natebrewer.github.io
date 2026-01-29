@@ -241,11 +241,25 @@ while True:
   </div>
 
   <p class="details"><i>Scroll right in each column to see full code</i></p>
+
+
+  <!-- 3D Model Viewer Embed -->
+  <model-viewer 
+      src="RobotArm.glb" 
+      alt="Gesture-Controlled Robotic Arm" 
+      auto-rotate 
+      camera-controls
+      background-color="#0e0e0e"
+      style="width: 600px; height: 400px; margin-top: 2rem;">
+  </model-viewer>
+  
 </main>
 
 <!-- Prism JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 
 <!-- Copy code JS -->
 <script>
