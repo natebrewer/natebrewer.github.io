@@ -21,5 +21,24 @@
 </ul>
 </nav>
 </main>
+
+<script>
+const roll = document.getElementById("roll");
+const pitch = document.getElementById("pitch");
+const grip = document.getElementById("grip");
+
+const upper = document.getElementById("upper");
+const lower = document.getElementById("lower");
+
+function updateArm() {
+  upper.style.transform = `rotate(${pitch.value - 90}deg)`;
+  lower.style.transform = `rotate(${roll.value - 90}deg) scaleX(${grip.value/50})`;
+}
+
+roll.oninput = updateArm;
+pitch.oninput = updateArm;
+grip.oninput = updateArm;
+updateArm();
+</script>
 </body>
 </html>
