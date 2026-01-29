@@ -1,56 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nathan Brewer | Projects</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
 <h1>Nathan Brewer</h1>
 <p class="subtitle">Robotics & Engineering Projects</p>
 
-
 <nav>
-<ul>
-<li><a href="about.html">About Me</a></li>
-<li><a href="gesture-arm.html">Gesture-Controlled Robotic Arm</a></li>
-<li><a href="barnacle.html">Robotics Barnacle Nauplius Model</a></li>
-<li><a href="battlebot.html">Antweight BattleBot</a></li>
-</ul>
+  <ul>
+    <li><a href="about.html">About Me</a></li>
+    <li><a href="gesture-arm.html">Gesture-Controlled Robotic Arm</a></li>
+    <li><a href="barnacle.html">Robotics Barnacle Nauplius Model</a></li>
+    <li><a href="battlebot.html">Antweight BattleBot</a></li>
+  </ul>
 </nav>
 </main>
-
-<script>
-const roll = document.getElementById("roll");
-const pitch = document.getElementById("pitch");
-const grip = document.getElementById("grip");
-
-const upper = document.getElementById("upper");
-const lower = document.getElementById("lower");
-
-function updateArm() {
-  upper.style.transform = `rotate(${pitch.value - 90}deg)`;
-  lower.style.transform = `rotate(${roll.value - 90}deg) scaleX(${grip.value/50})`;
-}
-
-roll.oninput = updateArm;
-pitch.oninput = updateArm;
-grip.oninput = updateArm;
-updateArm();
-</script>
-
-<script>
-document.querySelectorAll(".copy-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const code = btn.nextElementSibling.innerText;
-    navigator.clipboard.writeText(code);
-    const original = btn.innerText;
-    btn.innerText = "Copied!";
-    setTimeout(() => btn.innerText = original, 1200);
-  });
-});
-</script>
 </body>
 </html>
