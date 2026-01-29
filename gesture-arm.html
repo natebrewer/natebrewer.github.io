@@ -8,42 +8,52 @@
   <!-- Your site CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Prism JS only (default CSS ignored for background) -->
+  <!-- Prism syntax highlighting -->
   <link rel="stylesheet" href="https://unpkg.com/prismjs-themes@2.0.0/dist/prism-vsc-dark-plus.min.css"/>
 
-  
   <style>
     /* Container for side-by-side code blocks */
     .code-container {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap; /* stack on small screens */
+      flex-wrap: wrap;
       margin-top: 2rem;
     }
 
-    /* Style pre blocks to match site background */
     .code-container pre {
       flex: 1 1 48%;
       min-width: 300px;
-      box-sizing: border-box;
-      overflow-x: auto;
-      background: #0e0e0e !important; /* site background */
-      color: #e6e6e6 !important;      /* off-white text */
-      font-size: 0.85rem;
-      line-height: 1.4;
+      background: #0e0e0e !important; /* match site background */
+      color: #e6e6e6 !important;
+      position: relative; /* for copy button */
       padding: 1rem;
       border-radius: 10px;
-      white-space: pre;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.4;
       margin: 0;
     }
 
-    /* Ensure code inside pre inherits the same background & color */
     .code-container pre code {
       background: inherit !important;
       color: inherit !important;
       display: block;
       white-space: pre;
-      font-family: inherit;
+      font-family: "Helvetica", monospace;
+    }
+
+    /* Copy button styling */
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      background: #1a1a1a;
+      color: #eee;
+      border-radius: 6px;
+      border: 1px solid #333;
     }
 
     /* Optional Prism token colors */
@@ -52,7 +62,6 @@
     .token.function, .token.class-name { color: #fdd663 !important; }
     .token.string, .token.char { color: #a5d6a7 !important; }
 
-    /* Stack columns on smaller screens */
     @media (max-width: 900px) {
       .code-container pre {
         flex: 1 1 100%;
@@ -85,22 +94,17 @@
   </p>
 
   <h2>Software Control</h2>
-  <p>Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate using the BLE intereface
-  built into the boards through the BLE radio library. Advertisement is handled by the receiver board, with connected, disconnected, and error states
-  displayed through the onboard NeoPixel LEDs. The actual sensing of position is done with the onboard 3-axis accelerometer of the sensor board, which 
-  whose x,y,z acceleration vector is converted to pitch and roll using arctangent projections. These packets are passed over the BLE link after being smoothed 
-  with an EMA filter, alongside the grip state and send state. The grip and send states are controlled by the 2 push buttons included on the BlueFruit, and 
-  determine whether the claw is closed and the connection is live, respectively. Simply, the send state allows temporary disconnection of the arm from the 
-  sensor without closing the UART stream. The servoes are controlled using the analog out pins on the receiver board, alongside the Adafruit ServoMotor library. 
+  <p>
+    Below are the Python scripts for the receiver (left) and sensor (right) boards. The two communicate using the BLE interface.
+    The receiver handles connection, disconnection, and error states with the onboard NeoPixel LEDs. The sensor reads pitch and roll
+    from the onboard accelerometer and sends packets over BLE, including grip state controlled by the buttons.
   </p>
 
-
-  <!-- Side-by-side Python code -->
-<div class="code-container">
-  <!-- RECEIVER CODE -->
-  <div class="code-block">
-    <button class="copy-btn">Copy</button>
-    <pre><code class="language-python">
+  <!-- Side-by-side Python code blocks -->
+  <div class="code-container">
+    <!-- RECEIVER CODE -->
+    <pre class="language-python">
+      <button class="copy-btn">Copy</button>
 # ---- RECEIVER CODE ----
 import time
 from adafruit_ble import BLERadio
@@ -160,13 +164,11 @@ while True:
                 grip_servo.angle = 0
             else:
                 grip_servo.angle = 100
-    </code></pre>
-  </div>
+    </pre>
 
-  <!-- SENSOR CODE -->
-  <div class="code-block">
-    <button class="copy-btn">Copy</button>
-    <pre><code class="language-python">
+    <!-- SENSOR CODE -->
+    <pre class="language-python">
+      <button class="copy-btn">Copy</button>
 #### SENSOR CODE ####
 import time
 from adafruit_circuitplayground import cp
@@ -226,32 +228,8 @@ while True:
             pass
 
         time.sleep(0.15)
-    </code></pre>
+    </pre>
   </div>
-</div>
 
- <p class="details">
-    <i> Scroll right in each column to see full code</i>
-  </p>
-<h2>Arm Simulator</h2>
-
-<div class="arm-ui">
-  Roll <input type="range" id="roll" min="0" max="180" value="90"><br>
-  Pitch <input type="range" id="pitch" min="0" max="180" value="90"><br>
-  Grip <input type="range" id="grip" min="0" max="100" value="50">
-</div>
-
-<div class="arm">
-  <div class="base">
-    <div class="upper" id="upper">
-      <div class="lower" id="lower"></div>
-    </div>
-  </div>
-</div>
+  <p class="details"><i>Scroll right in each column to see full code</i></p>
 </main>
-
-<!-- Prism JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-</body>
-</html>
