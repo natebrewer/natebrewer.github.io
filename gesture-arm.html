@@ -63,6 +63,20 @@
       border: 1px solid #333;
     }
 
+
+    .model-container {
+  width: 100%;
+  max-width: 1200px; /* optional: limit on very wide screens */
+  margin: 2rem auto;  /* center horizontally and add vertical spacing */
+}
+
+.model-container model-viewer {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* keeps a nice proportion */
+  display: block; 
+}
+
     /* Optional Prism token colors */
     .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #a0a0a0 !important; }
     .token.keyword { color: #ff8a65 !important; }
@@ -243,15 +257,15 @@ while True:
   <p class="details"><i>Scroll right in each column to see full code</i></p>
 
 
-  <!-- 3D Model Viewer Embed -->
+<div class="model-container">
   <model-viewer 
       src="RobotArm.glb" 
       alt="Gesture-Controlled Robotic Arm" 
       auto-rotate 
       camera-controls
-      background-color="#0e0e0e"
-      style="width: 600px; height: 400px; margin-top: 2rem;">
+      background-color="#0e0e0e">
   </model-viewer>
+</div>
   
 </main>
 
