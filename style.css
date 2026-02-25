@@ -115,3 +115,14 @@ p {
 .wide-image {
   width: 100%;
 }
+
+.back,
+.back:visited {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.back:hover {
+  opacity: 1;
+}
