@@ -1,94 +1,81 @@
-/* Minimalist dark theme */
-
+/* ===================== style.css ===================== */
+/* Minimalist warm-dark theme (NO hover blue shift) */
 
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 body {
-margin: 0;
-background-color: #1F1E1C; /* soft black */
-color: #ffffff;
-font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: #1F1E1C; /* warm black */
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
 }
-
 
 main {
-max-width: 700px;
-margin: 0 auto;
-padding: 80px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
-
 
 h1 {
-font-size: 2.2rem;
-font-weight: 500;
-margin-bottom: 0.5em;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5em;
 }
-
 
 .subtitle {
-font-size: 1rem;
-opacity: 0.7;
-margin-bottom: 3rem;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 3rem;
 }
-
 
 nav ul {
-list-style: none;
-padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
 
 nav li {
-margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
 }
-
 
 nav a {
-color: #ffffff;
-text-decoration: none;
-font-size: 1.1rem;
-opacity: 0.85;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  opacity: 0.85;
 }
-
 
 nav a:hover {
-opacity: 1;
+  opacity: 1;
 }
-
 
 p {
-font-size: 1rem;
-line-height: 1.7;
-opacity: 0.9;
-margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 2rem;
 }
-
 
 .details {
-font-size: .85rem !important;
-margin-top: .75rem !important;
-opacity: 0.7;
+  font-size: 0.85rem !important;
+  margin-top: 0.75rem !important;
+  opacity: 0.7;
 }
-
 
 .back {
-display: inline-block;
-margin-bottom: 2rem;
-font-size: 0.9rem;
-color: #ffffff;
-text-decoration: none;
-opacity: 0.6;
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.6;
 }
-
 
 .back:hover {
-opacity: 1;
+  opacity: 1;
 }
-
-
 
 h2 {
   margin-top: 3rem;
@@ -96,14 +83,12 @@ h2 {
   font-weight: 500;
 }
 
-pre[class*="language-"] {
-  background: transparent !important;
-}
-
+pre[class*="language-"],
 code[class*="language-"] {
   background: transparent !important;
 }
 
+/* --- Arm demo styles (unchanged) --- */
 .arm {
   margin: 40px auto;
   width: 200px;
@@ -136,16 +121,47 @@ code[class*="language-"] {
 .arm-ui input {
   width: 200px;
 }
-.project-card {
+
+/* --- Projects formatting (two cards + full-width image) --- */
+
+.nav-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.project-link {
+.projects-row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.project-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   color: inherit;
+  opacity: 1;              /* keep stable */
+  font-size: 1rem;         /* prevent nav a sizing from overriding */
+}
+
+.project-image {
+  width: 300px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.18s ease; /* ONLY transform (no shadow) */
+}
+
+/* NO box-shadow here: shadow+transform is what causes the blue shift */
+.project-card:hover .project-image {
+  transform: translateY(-4px);
 }
 
 .project-title {
@@ -153,16 +169,30 @@ code[class*="language-"] {
   font-size: 1rem;
   font-weight: 500;
   text-align: center;
+  opacity: 0.9;
 }
 
-.project-image {
-  width: 300px;
+/* Full-bleed (full page width) barnacle image */
+.wide-link {
+  display: block;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: inherit;
+  padding: 0 24px 80px; /* match page padding + bottom space */
+  opacity: 1;           /* stable */
+}
+
+.wide-image {
+  width: 100%;
   height: auto;
-  border-radius: 8px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.18s ease; /* ONLY transform (no shadow) */
 }
 
-.project-link:hover .project-image {
+.wide-link:hover .wide-image {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
