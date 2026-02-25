@@ -1,5 +1,6 @@
-/* ===================== style.css ===================== */
-/* Minimalist warm-dark theme (NO hover blue shift) */
+/* ===================== */
+/* Minimalist Warm Theme */
+/* ===================== */
 
 * {
   box-sizing: border-box;
@@ -88,7 +89,10 @@ code[class*="language-"] {
   background: transparent !important;
 }
 
-/* --- Arm demo styles (unchanged) --- */
+/* ===================== */
+/* Arm demo (unchanged)  */
+/* ===================== */
+
 .arm {
   margin: 40px auto;
   width: 200px;
@@ -122,49 +126,45 @@ code[class*="language-"] {
   width: 200px;
 }
 
-/* --- Projects formatting (two cards + full-width image) --- */
+/* ===================== */
+/* Projects Layout       */
+/* ===================== */
 
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+/* Row with two small projects */
 .projects-row {
   display: flex;
   gap: 28px;
   align-items: flex-start;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
 }
 
+/* Project card (entire thing clickable) */
 .project-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   text-decoration: none;
   color: inherit;
-  opacity: 1;              /* keep stable */
-  font-size: 1rem;         /* prevent nav a sizing from overriding */
+  opacity: 1; /* override nav link opacity */
+  max-width: 300px;
 }
 
+/* Small images */
 .project-image {
   width: 300px;
   height: auto;
   display: block;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.18s ease; /* ONLY transform (no shadow) */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 0.18s ease;
 }
 
-/* NO box-shadow here: shadow+transform is what causes the blue shift */
+/* Hover effect — NO box-shadow (prevents blue shift) */
 .project-card:hover .project-image {
   transform: translateY(-4px);
 }
 
+/* Project titles */
 .project-title {
+  display: block;
   margin-top: 0.75rem;
   font-size: 1rem;
   font-weight: 500;
@@ -172,27 +172,17 @@ code[class*="language-"] {
   opacity: 0.9;
 }
 
-/* Full-bleed (full page width) barnacle image */
-.wide-link {
-  display: block;
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  text-decoration: none;
-  color: inherit;
-  padding: 0 24px 80px; /* match page padding + bottom space */
-  opacity: 1;           /* stable */
+/* Wide project row */
+.project-wide {
+  margin-bottom: 1.2rem;
 }
 
+/* Wide card spans full width of main column */
+.wide-card {
+  max-width: 100%;
+}
+
+/* Wide image */
 .wide-image {
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.18s ease; /* ONLY transform (no shadow) */
-}
-
-.wide-link:hover .wide-image {
-  transform: translateY(-4px);
 }
