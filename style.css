@@ -174,7 +174,7 @@ code[class*="language-"] {
 /* Hover effect for small images */
 .project-link:hover .project-image {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* Wide project row */
@@ -196,5 +196,5 @@ code[class*="language-"] {
 /* Hover effect for wide image */
 .project-wide .project-link:hover .project-image-wide {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
