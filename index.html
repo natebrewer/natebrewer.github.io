@@ -1,33 +1,53 @@
+<!-- ===================== index.html ===================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nathan Brewer | Projects</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nathan Brewer | Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-<main>
-<h1>Nathan Brewer</h1>
-<p class="subtitle">Personal Portfolio</p>
 
-<nav>
-  <ul>
-    <li><a href="about.html">About Me</a></li>
-    <li class="project-card">
-  <a href="gesture-arm.html" class="project-link">
-    <img 
-      src="images/RobotArmFrontPage.jpeg" 
-      alt="Gesture-Controlled Robotic Arm"
-      class="project-image"
-    >
-    <span class="project-title">Gesture-Controlled Robotic Arm</span>
+<body>
+  <main>
+    <h1>Nathan Brewer</h1>
+    <p class="subtitle">Personal Portfolio</p>
+
+    <nav>
+      <ul class="nav-list">
+        <li><a href="about.html">About Me</a></li>
+
+        <!-- Row: two images side-by-side -->
+        <li class="projects-row">
+          <a href="gesture-arm.html" class="project-card">
+            <img
+              src="images/RobotArmFrontPage.jpeg"  <!-- ✅ CHANGE FILE NAME HERE -->
+              alt="Gesture-Controlled Robotic Arm"
+              class="project-image"
+            />
+            <span class="project-title">Gesture-Controlled Robotic Arm</span>
+          </a>
+
+          <a href="battlebot.html" class="project-card">
+            <img
+              src="images/BattlebotFrontPage.jpeg"  <!-- ✅ CHANGE FILE NAME HERE -->
+              alt="Antweight BattleBot"
+              class="project-image"
+            />
+            <span class="project-title">Antweight BattleBot</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- Full page width image below the two cards -->
+  <a href="barnacle.html" class="wide-link" aria-label="Robotics Barnacle Nauplius Model">
+    <img
+      src="images/BarnacleWideFrontPage.jpeg"     <!-- ✅ CHANGE FILE NAME HERE -->
+      alt="Robotics Barnacle Nauplius Model"
+      class="wide-image"
+    />
   </a>
-</li>
-    <li><a href="barnacle.html">Robotics Barnacle Nauplius Model</a></li>
-    <li><a href="battlebot.html">Antweight BattleBot</a></li>
-  </ul>
-</nav>
-</main>
 </body>
 </html>
