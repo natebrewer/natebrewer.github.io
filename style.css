@@ -125,24 +125,27 @@ code[class*="language-"] {
   width: 200px;
 }
 
-/* --- Projects (two side-by-side image links) --- */
+/* --- Projects layout --- */
 
+/* Row with two small project cards */
 .project-row {
   display: flex;
   justify-content: flex-start; /* left align */
   align-items: flex-start;
   gap: 40px;
   padding: 0;
-  margin: 0;                  /* override nav li spacing */
+  margin: 0;                   /* prevent extra spacing */
   list-style: none;
-  flex-wrap: wrap;            /* wrap on smaller screens */
+  flex-wrap: wrap;             /* wrap on small screens */
 }
 
+/* Individual project card */
 .project-card {
   list-style: none;
-  margin: 0;                  /* prevent nav li margin-bottom from applying */
+  margin: 0;                   /* prevent nav li margin-bottom from affecting inside */
 }
 
+/* Link wrapper */
 .project-link {
   display: flex;
   flex-direction: column;
@@ -151,6 +154,7 @@ code[class*="language-"] {
   color: inherit;
 }
 
+/* Title under images */
 .project-title {
   margin-top: 0.75rem;
   font-size: 1rem;
@@ -158,6 +162,7 @@ code[class*="language-"] {
   text-align: center;
 }
 
+/* Small images */
 .project-image {
   width: 300px;
   height: auto;
@@ -166,7 +171,30 @@ code[class*="language-"] {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover effect for small images */
 .project-link:hover .project-image {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Wide project row */
+.project-wide {
+  margin-top: 2rem;
+  margin-bottom: 1.2rem; /* keep consistent spacing in nav list */
+  list-style: none;
+}
+
+/* Wide image */
+.project-image-wide {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for wide image */
+.project-wide .project-link:hover .project-image-wide {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
