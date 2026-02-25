@@ -1,5 +1,5 @@
 /* ===================== */
-/* Minimalist Warm Theme */
+/* Base / Theme          */
 /* ===================== */
 
 * {
@@ -8,13 +8,13 @@
 
 body {
   margin: 0;
-  background-color: #0e0e0e; /* warm black */
+  background-color: #0e0e0e;
   color: #f2f2f2;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 main {
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 80px 24px;
 }
@@ -31,27 +31,6 @@ h1 {
   margin-bottom: 3rem;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-nav li {
-  margin-bottom: 1.2rem;
-}
-
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  opacity: 0.85;
-}
-
-nav a:hover {
-  opacity: 1;
-}
-
 p {
   font-size: 1rem;
   line-height: 1.7;
@@ -59,130 +38,80 @@ p {
   margin-bottom: 2rem;
 }
 
-.details {
-  font-size: 0.85rem !important;
-  margin-top: 0.75rem !important;
-  opacity: 0.7;
+/* ===================== */
+/* Nav / List Reset      */
+/* ===================== */
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.back {
-  display: inline-block;
-  margin-bottom: 2rem;
-  font-size: 0.9rem;
-  color: #ffffff;
+.nav-link {
+  color: white;
   text-decoration: none;
-  opacity: 0.6;
+  opacity: 0.8;
+  font-size: 1.05rem;
 }
 
-.back:hover {
+.nav-link:hover {
   opacity: 1;
-}
-
-h2 {
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-pre[class*="language-"],
-code[class*="language-"] {
-  background: transparent !important;
-}
-
-/* ===================== */
-/* Arm demo (unchanged)  */
-/* ===================== */
-
-.arm {
-  margin: 40px auto;
-  width: 200px;
-  height: 200px;
-}
-
-.base {
-  width: 20px;
-  height: 80px;
-  background: #888;
-  margin: auto;
-  transform-origin: bottom;
-}
-
-.upper {
-  width: 120px;
-  height: 12px;
-  background: #aaa;
-  transform-origin: left center;
-}
-
-.lower {
-  width: 80px;
-  height: 10px;
-  background: #ccc;
-  margin-left: 120px;
-  transform-origin: left center;
-}
-
-.arm-ui input {
-  width: 200px;
 }
 
 /* ===================== */
 /* Projects Layout       */
 /* ===================== */
 
-/* Row with two small projects */
+/* Row of two cards */
 .projects-row {
   display: flex;
   gap: 28px;
-  align-items: flex-start;
-  margin-bottom: 1.2rem;
+  margin-top: 1.5rem;
 }
 
-/* Project card (entire thing clickable) */
+/* Entire card clickable */
 .project-card {
   display: block;
   text-decoration: none;
   color: inherit;
-  opacity: 1; /* override nav link opacity */
-  max-width: 300px;
+  width: 100%;
+  max-width: 320px;
 }
 
-/* Small images */
+/* Images */
 .project-image {
-  width: 300px;
+  width: 100%;
   height: auto;
   display: block;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255,255,255,0.06);
   transition: transform 0.18s ease;
 }
 
-/* Hover effect — NO box-shadow (prevents blue shift) */
+/* Hover lift ONLY (no glow / no color shift) */
 .project-card:hover .project-image {
   transform: translateY(-4px);
 }
 
-/* Project titles */
+/* Title */
 .project-title {
   display: block;
-  margin-top: 0.75rem;
+  margin-top: 0.7rem;
   font-size: 1rem;
-  font-weight: 500;
   text-align: center;
   opacity: 0.9;
 }
 
-/* Wide project row */
+/* Wide project */
 .project-wide {
-  margin-bottom: 1.2rem;
+  margin-top: 1.8rem;
 }
 
-/* Wide card spans full width of main column */
 .wide-card {
   max-width: 100%;
 }
 
-/* Wide image */
 .wide-image {
   width: 100%;
 }
