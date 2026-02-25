@@ -166,3 +166,37 @@ code[class*="language-"] {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
+
+.project-row {
+  display: flex;
+  gap: 40px;           /* space between images */
+  list-style: none;    /* remove bullet */
+  padding: 0;
+}
+
+.project-card {
+  text-align: center;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-image {
+  width: 300px;        /* adjust size as needed */
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+}
+
+.project-title {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
