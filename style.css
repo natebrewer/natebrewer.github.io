@@ -1,94 +1,80 @@
 /* Minimalist dark theme */
 
-
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 body {
-margin: 0;
-background-color: #0e0e0e; /* soft black */
-color: #ffffff;
-font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: #0e0e0e; /* soft black */
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
 }
-
 
 main {
-max-width: 700px;
-margin: 0 auto;
-padding: 80px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
-
 
 h1 {
-font-size: 2.2rem;
-font-weight: 500;
-margin-bottom: 0.5em;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5em;
 }
-
 
 .subtitle {
-font-size: 1rem;
-opacity: 0.7;
-margin-bottom: 3rem;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 3rem;
 }
-
 
 nav ul {
-list-style: none;
-padding: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
 
 nav li {
-margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
 }
-
 
 nav a {
-color: #ffffff;
-text-decoration: none;
-font-size: 1.1rem;
-opacity: 0.85;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  opacity: 0.85;
 }
-
 
 nav a:hover {
-opacity: 1;
+  opacity: 1;
 }
-
 
 p {
-font-size: 1rem;
-line-height: 1.7;
-opacity: 0.9;
-margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 2rem;
 }
-
 
 .details {
-font-size: .85rem !important;
-margin-top: .75rem !important;
-opacity: 0.7;
+  font-size: 0.85rem !important;
+  margin-top: 0.75rem !important;
+  opacity: 0.7;
 }
-
 
 .back {
-display: inline-block;
-margin-bottom: 2rem;
-font-size: 0.9rem;
-color: #ffffff;
-text-decoration: none;
-opacity: 0.6;
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.6;
 }
-
 
 .back:hover {
-opacity: 1;
+  opacity: 1;
 }
-
-
 
 h2 {
   margin-top: 3rem;
@@ -103,6 +89,8 @@ pre[class*="language-"] {
 code[class*="language-"] {
   background: transparent !important;
 }
+
+/* --- Arm demo styles (if used on a page) --- */
 
 .arm {
   margin: 40px auto;
@@ -136,8 +124,23 @@ code[class*="language-"] {
 .arm-ui input {
   width: 200px;
 }
+
+/* --- Projects (two side-by-side image links) --- */
+
+.project-row {
+  display: flex;
+  justify-content: flex-start; /* left align */
+  align-items: flex-start;
+  gap: 40px;
+  padding: 0;
+  margin: 0;                  /* override nav li spacing */
+  list-style: none;
+  flex-wrap: wrap;            /* wrap on smaller screens */
+}
+
 .project-card {
   list-style: none;
+  margin: 0;                  /* prevent nav li margin-bottom from applying */
 }
 
 .project-link {
@@ -158,45 +161,12 @@ code[class*="language-"] {
 .project-image {
   width: 300px;
   height: auto;
+  display: block;
   border-radius: 8px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-link:hover .project-image {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-.project-row {
-  display: flex;
-  gap: 40px;           /* space between images */
-  list-style: none;    /* remove bullet */
-  padding: 0;
-}
-
-.project-card {
-  text-align: center;
-}
-
-.project-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.project-image {
-  width: 300px;        /* adjust size as needed */
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  transition: transform 0.2s ease;
-}
-
-.project-image:hover {
-  transform: scale(1.05);
-}
-
-.project-title {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
