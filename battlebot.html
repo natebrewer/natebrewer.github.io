@@ -61,9 +61,16 @@ principal stress to simulate a "worst-case scenario." </p>
 The wheels are a PLA printed hub with elastomer tire, currently running 22mm wheel diameter. I may adjust this up to 34mm depending on how testing goes in the current configuration. </p>
 
 <h2 id="electrical">Electrical System</h2>
-<p>The power source for this robot is a 450 mAh 2S LiPo, which some back-of-the-envelope math should run the drive motors and weapon motor for a 3 minute match without dropping too low. This feeds power
-directly to a Malenki Nano, which contains the two brushed ESCs for the drivetrain. It also contains our i6X addressed AFHDS radio for communication. I have soldered a brushless 35A ESC to control the main weapon 
-motor and handle it's more severe current spikes. There is a master switch atop the robot for easy deactivation. </p>
+
+<div class="electrical-layout">
+  <img src="image_2026-03-04_210337032.png" alt="Electrical system" class="electrical-img">
+
+  <p>
+  The power source for this robot is a 450 mAh 2S LiPo, which some back-of-the-envelope math should run the drive motors and weapon motor for a 3 minute match without dropping too low. This feeds power
+  directly to a Malenki Nano, which contains the two brushed ESCs for the drivetrain. It also contains our i6X addressed AFHDS radio for communication. I have soldered a brushless 35A ESC to control the main weapon 
+  motor and handle it's more severe current spikes. There is a master switch atop the robot for easy deactivation.
+  </p>
+</div>
 
 <h3>Block Diagram</h3>
 <img src="battlebot-block-diagram.png" alt="Electrical block diagram" style="width:100%; border-radius:12px; border:1px solid #333;">
