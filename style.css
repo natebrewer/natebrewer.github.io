@@ -126,3 +126,19 @@ p {
 .back:hover {
   opacity: 1;
 }
+
+.electrical-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.electrical-img {
+  width: 250px;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.electrical-layout p {
+  flex: 1;
+}
