@@ -26,7 +26,7 @@
 <section class="specs">
   <h2>Quick Specifications</h2>
   <ul>
-    <li><b>Weight class:</b> Antweight UK</li>
+    <li><b>Weight class:</b> Antweight UK, Fairyweight US</li>
     <li><b>Weapon:</b> Vertical spinner</li>
     <li><b>Drive:</b> N20 brushed motors</li>
     <li><b>Battery:</b> 450 mAh 2S LiPo</li>
@@ -41,7 +41,8 @@
   as TPU can withstand hits which would shatter PLA pieces. The tradeoff is that the flexibility makes TPU non-ideal for maintaing structure. Therefore, I get the best of both worlds from the design
   combination I am currently running. The rigid PLA top and bottom plates provide structral strength where they are unlikely to take direct hits from other bots, while the flexible TPU walls absorb these hits. 
 
-  Mechanically, this robot is a 20-wheel drive vertical spinner design. I have a spinner made from 1/8th inch bar steel functioning as the kinetic weapon. 
+  Mechanically, this robot is a 2 wheel drive vertical spinner design. This general category of design tends to do well in a mix of defense and offensive output, and I thought it would be a good
+  introductory style. For future designs, I would love to try an "eggbeater" design. 
 </p>
 
 <div class="model-container">
@@ -49,16 +50,21 @@
 </div>
 
 <h3>Weapon</h3>
-<p>...</p>
+<p>The weapon system of this bot is a 1/8th-inch-thick steel spinner driven by a Repeat Robotics 2004 direct drive motor. The spinner radius is 52mm, on the upper bound of what I could reasonably
+fit into the design. Vertical spinners do have some gyroscopic impact on driving and turning, but I really liked the damage vs. flinging versatility of vertical spinner designs. The motor is optioned 
+at 2800KV, giving me nominally approximately 20,000 RPM. Under free-spinning conditions, which assume a weightless spinner, this would give approximately 160 mph tip speed of the weapon. This will obviously
+be lower in practice, but is a good upper bound to keep in mind.Below is a simulated FEA event of the spinner colliding with a PLA bottom plate at its maximum RPM. The motor shaft and screws are modeled as rigid bodies, while the PLA plate is fixed at boundaries with element deletion based on 
+principal stress to simulate a "worst-case scenario." </p>
 
 <h3>Drivetrain</h3>
-<p>...</p>
+<p>The drivetrain consists of two N20 brushed motors at 600 rpm. I am running metal gearboxes with a 3mm D-hole output shaft, which should help prevent gearbox damage in the event of a direct wheel hit. 
+The wheels are a PLA printed hub with elastomer tire, currently running 22mm wheel diameter. I may adjust this up to 34mm depending on how testing goes in the current configuration. </p>
 
 <h2 id="electrical">Electrical System</h2>
-<p>...</p>
+<p>The power source for this robot is a 450 mAh 2S LiPo, which some back-of-the-envelope math should run the drive motors and weapon motor for a 3 minute match without dropping too low. This feeds power
+directly to a Malenki Nano, which contains the two brushed ESCs for the drivetrain. It also contains our i6X addressed AFHDS radio for communication. I have soldered a brushless 35A ESC to control the main weapon 
+motor and handle it's more severe current spikes. There is a master switch atop the robot for easy deactivation. </p>
 
 <h3>Block Diagram</h3>
 <img src="battlebot-block-diagram.png" alt="Electrical block diagram" style="width:100%; border-radius:12px; border:1px solid #333;">
 
-<h3>Wiring Layout</h3>
-<p>...</p>
