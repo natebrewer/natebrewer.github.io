@@ -22,6 +22,13 @@
     allowfullscreen>
   </iframe>
 </div>
+<h2>Project Overview</h2>
+  Ryzing Technologies maintains the ability to test extreme weather equipment in the extreme conditions they are designed to operate in. This includes extreme wind testing,
+  which we accomplish using repurposed fan boat engines and propellers. Our pair of Cadillac 500 V8 engines are capable of sustaining 100 MPH laminar flow with driven aggregate,
+  sand, and water. To enhance the precision and repeatability of our testing, and allow for more specialized testing, I designed, fabricated, and installed a system to allow
+  testing profiles to be loaded and run autonomously on these engines. Testing profiles are saved as CSV files with target RPMs and durations on a micro SD card, where they are 
+  read and displayed by an onboard microcontroller. The microcontroller controls the throttle cable via a servo motor, using a Hall effect sensor mounted on the crankshaft pulley
+  to allow closed-loop control. 
   
 
 <h2 id="mechanical">Mechanical Design</h2>
@@ -39,12 +46,13 @@
   <model-viewer src="Battlebot.glb" auto-rotate camera-controls></model-viewer>
 </div>
 
-<h3>Weapon</h3>
-<p>The weapon system of this bot is a 1/8th-inch-thick steel spinner driven by a Repeat Robotics 2004 direct drive motor. The spinner radius is 52mm, on the upper bound of what I could reasonably
-fit into the design. Vertical spinners do have some gyroscopic impact on driving and turning, but I really liked the damage vs. flinging versatility of vertical spinner designs. The motor is optioned 
-at 2800KV, giving me nominally approximately 20,000 RPM. Under free-spinning conditions, which assume a weightless spinner, this would give approximately 160 mph tip speed of the weapon. This will obviously
-be lower in practice, but is a good upper bound to keep in mind.Below is a simulated FEA event of the spinner colliding with a PLA bottom plate at its maximum RPM. The motor shaft and screws are modeled as rigid bodies, while the PLA plate is fixed at boundaries with element deletion based on 
-principal stress to simulate a "worst-case scenario." </p>
+<h2>Electrical Design</h2>
+  <h3>Control Box</h3>
+  The control box houses most of the user interface and the "brains" of the system. We are currently driving the system with an Arduino Giga R1, which handles all user inputs,
+  SD card profiles, and motor communication. 
+<p>
+  
+</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe
