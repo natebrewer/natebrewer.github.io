@@ -23,12 +23,14 @@
   </iframe>
 </div>
 <h2>Project Overview</h2>
+  <p>
   Ryzing Technologies maintains the ability to test extreme weather equipment in the extreme conditions they are designed to operate in. This includes extreme wind testing,
   which we accomplish using repurposed fan boat engines and propellers. Our pair of Cadillac 500 V8 engines are capable of sustaining 100 MPH laminar flow with driven aggregate,
   sand, and water. To enhance the precision and repeatability of our testing, and allow for more specialized testing, I designed, fabricated, and installed a system to allow
   testing profiles to be loaded and run autonomously on these engines. Testing profiles are saved as CSV files with target RPMs and durations on a micro SD card, where they are 
   read and displayed by an onboard microcontroller. The microcontroller controls the throttle cable via a servo motor, using a Hall effect sensor mounted on the crankshaft pulley
   to allow closed-loop control. 
+  </p>
   
 
 <h2 id="mechanical">Mechanical Design</h2>
@@ -47,11 +49,17 @@
 </div>
 
 <h2>Electrical Design</h2>
-  <h3>Control Box</h3>
-  The control box houses most of the user interface and the "brains" of the system. We are currently driving the system with an Arduino Giga R1, which handles all user inputs,
-  SD card profiles, and motor communication. 
 <p>
-  
+   The control box houses most of the user interface and the "brains" of the system. We are currently driving the system with an Arduino Giga R1, which handles all user inputs,
+  SD card profiles, and motor communication. An Adafruit MicroSD breakout handles our file system, with an OLED display mounted to the control box for display and interfacing. Power, common, and 
+  gauge/signal lines run from the engine mount to the control box, with a common power and ground supplied from a fuse box. 
+</p>
+
+
+<h2>Control Loop</h2>
+<p>
+   An onboard Hall effect sensor mounted to the crankshaft pulley provides an RPM estimate across a 5 second interval. The Arduino uses this RPM reading for closed loop control, with a PID 
+  controller handling RPM changes. 
 </p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
