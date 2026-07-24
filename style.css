@@ -79,10 +79,11 @@ p {
   max-width: 320px;
 }
 
-/* Images */
+
 .project-image {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;      /* pick a ratio that suits your images, e.g. 16/9 or 1/1 */
+  object-fit: cover;        /* crops instead of squishing */
   display: block;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.06);
