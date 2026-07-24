@@ -90,6 +90,14 @@ p {
   transition: transform 0.18s ease;
 }
 
+
+.wide-image {
+  width: 100%;
+  aspect-ratio: auto;   /* undo the 4:3 crop from .project-image */
+  object-fit: contain;  /* or just remove object-fit entirely */
+  height: auto;
+}
+
 /* Hover lift ONLY (no glow / no color shift) */
 .project-card:hover .project-image {
   transform: translateY(-4px);
