@@ -13,7 +13,7 @@ body {
 main {
   max-width: none;
   margin: 0;
-  padding: 80px 40px;
+  padding: 80px 32px;
 }
 h1 {
   font-size: 2.2rem;
@@ -55,8 +55,8 @@ p {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 28px;
+  align-items: stretch; /* makes all cards in a row match the tallest one's height */
+  gap: 24px;
 }
 
 /* "About Me" is the first li in the list — keep it on its own row
@@ -72,18 +72,22 @@ p {
   display: contents;
 }
 
-/* Entire card clickable */
+/* Entire card clickable — flex column so the image can stretch
+   to fill whatever height the row ends up being (set by the wide card) */
 .project-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-decoration: none;
   color: inherit;
   width: 100%;
-  max-width: 320px;
+  max-width: 300px;
 }
 .project-image {
   width: 100%;
-  aspect-ratio: 4 / 3;      /* pick a ratio that suits your images, e.g. 16/9 or 1/1 */
-  object-fit: cover;        /* crops instead of squishing */
+  flex: 1 1 auto;   /* grow/shrink to match the card's stretched height */
+  min-height: 0;
+  object-fit: cover; /* crops instead of squishing */
   display: block;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -91,9 +95,9 @@ p {
 }
 .wide-image {
   width: 100%;
-  aspect-ratio: auto;   /* undo the 4:3 crop from .project-image */
-  object-fit: contain;  /* or just remove object-fit entirely */
-  height: auto;
+  aspect-ratio: 16 / 9; /* fixed ratio — this is what sets the row's height */
+  object-fit: cover;
+  flex: none;
 }
 /* Hover lift ONLY (no glow / no color shift) */
 .project-card:hover .project-image {
@@ -112,7 +116,7 @@ p {
   margin-top: 0;
 }
 .wide-card {
-  width: calc(320px * 2 + 28px);
+  width: calc(300px * 2 + 24px);
   max-width: 100%;
 }
 
@@ -150,7 +154,7 @@ p {
 /* Sidebar TOC (scroll-spy nav) */
 /* ===================== */
 :root {
-  --toc-width: 220px;
+  --toc-width: 200px;
 }
 .toc-sidebar {
   position: fixed;
