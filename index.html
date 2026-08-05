@@ -5,76 +5,259 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nathan Brewer | Projects</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- Sidebar TOC (scroll-spy nav) ---- */
+    :root {
+      --toc-width: 220px;
+      --toc-accent: #4da6ff; /* swap this to match your brand color */
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .page-layout {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .toc-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: var(--toc-width);
+      flex-shrink: 0;
+      overflow-y: auto;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      border-right: 1px solid rgba(128, 128, 128, 0.25);
+    }
+
+    .toc-sidebar h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.6;
+      margin: 0 0 1rem 0;
+    }
+
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: inherit;
+      font-size: 0.95rem;
+      border-left: 3px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+      opacity: 0.65;
+    }
+
+    .toc-link:hover {
+      opacity: 1;
+      background: rgba(128, 128, 128, 0.1);
+    }
+
+    .toc-link.active {
+      opacity: 1;
+      font-weight: 600;
+      border-left-color: var(--toc-accent);
+      background: rgba(77, 166, 255, 0.08);
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+      padding: 0 1.5rem;
+    }
+
+    /* Give each project a little breathing room to scroll-spy against */
+    .project-wide,
+    .projects-row {
+      scroll-margin-top: 1.5rem;
+    }
+
+    /* ---- Mobile: collapse sidebar into a horizontal top bar ---- */
+    @media (max-width: 760px) {
+      .page-layout {
+        flex-direction: column;
+      }
+
+      .toc-sidebar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+        padding: 0.75rem 1rem;
+        z-index: 10;
+        background: inherit;
+      }
+
+      .toc-sidebar h2 {
+        display: none;
+      }
+
+      .toc-list {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+      }
+
+      .toc-link {
+        white-space: nowrap;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+      }
+
+      .toc-link.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--toc-accent);
+      }
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>Nathan Brewer</h1>
-    <p class="subtitle">Personal Portfolio</p>
-    <nav>
-      <ul class="projects-list">
-        <li><a href="about.html" class="nav-link">About Me</a></li>
-        <!-- Row 1 (new) -->
-        <li class="project-wide">
-          <a href="electric-throttle-control.html" class="project-card wide-card">
-            <img
-              src="images/YOUR_THROTTLE_IMAGE.png"
-              alt="Electric Throttle Control"
-              class="project-image wide-image"
-            >
-            <span class="project-title">Electric Throttle Control</span>
-          </a>
-        </li>
-        <!-- Row 2 -->
-        <li class="projects-row">
-          <a href="gesture-arm.html" class="project-card">
-            <img
-              src="images/RobotArmFrontPage.jpeg"
-              alt="Gesture-Controlled Robotic Arm"
-              class="project-image"
-            >
-            <span class="project-title">Gesture-Controlled Robotic Arm</span>
-          </a>
-          <a href="battlebot.html" class="project-card">
-            <img
-              src="images/updatedBotPage.png"
-              alt="Antweight BattleBot"
-              class="project-image"
-            >
-            <span class="project-title">Antweight BattleBot</span>
-          </a>
-        </li>
-        <!-- Row 3 -->
-        <li class="project-wide">
-          <a href="barnacle.html" class="project-card wide-card">
-            <img
-              src="images/BarnacleRobotFrontPage.png"
-              alt="Robotics Barnacle Nauplius Model"
-              class="project-image wide-image"
-            >
-            <span class="project-title">Robotics Barnacle Nauplius Model</span>
-          </a>
-        </li>
-        <!-- Row 4 -->
-        <li class="projects-row">
-          <a href="rocket.html" class="project-card">
-            <img
-              src="images/YOUR_ROCKET_IMAGE.png"
-              alt="Heat-Tracking Rocket Module"
-              class="project-image"
-            >
-            <span class="project-title">Heat-Tracking Rocket Module</span>
-          </a>
-          <a href="naloxone.html" class="project-card">
-            <img
-              src="images/YOUR_NALOXONE_IMAGE.png"
-              alt="Naloxone Carrying Case"
-              class="project-image"
-            >
-            <span class="project-title">Naloxone Carrying Case</span>
-          </a>
-        </li>
+  <div class="page-layout">
+
+    <!-- Sidebar table of contents -->
+    <aside class="toc-sidebar">
+      <h2>Projects</h2>
+      <ul class="toc-list" id="toc-list">
+        <li><a class="toc-link" href="#electric-throttle-control">Electric Throttle Control</a></li>
+        <li><a class="toc-link" href="#gesture-arm">Gesture-Controlled Robotic Arm</a></li>
+        <li><a class="toc-link" href="#battlebot">Antweight BattleBot</a></li>
+        <li><a class="toc-link" href="#barnacle">Robotics Barnacle Nauplius Model</a></li>
+        <li><a class="toc-link" href="#rocket">Heat-Tracking Rocket Module</a></li>
+        <li><a class="toc-link" href="#naloxone">Naloxone Carrying Case</a></li>
       </ul>
-    </nav>
-  </main>
+    </aside>
+
+    <main class="main-content">
+      <h1>Nathan Brewer</h1>
+      <p class="subtitle">Personal Portfolio</p>
+      <nav>
+        <ul class="projects-list">
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+
+          <!-- Row 1 -->
+          <li class="project-wide" id="electric-throttle-control">
+            <a href="electric-throttle-control.html" class="project-card wide-card">
+              <img
+                src="images/YOUR_THROTTLE_IMAGE.png"
+                alt="Electric Throttle Control"
+                class="project-image wide-image"
+              >
+              <span class="project-title">Electric Throttle Control</span>
+            </a>
+          </li>
+
+          <!-- Row 2 -->
+          <li class="projects-row" id="gesture-arm-row">
+            <a href="gesture-arm.html" class="project-card" id="gesture-arm">
+              <img
+                src="images/RobotArmFrontPage.jpeg"
+                alt="Gesture-Controlled Robotic Arm"
+                class="project-image"
+              >
+              <span class="project-title">Gesture-Controlled Robotic Arm</span>
+            </a>
+            <a href="battlebot.html" class="project-card" id="battlebot">
+              <img
+                src="images/updatedBotPage.png"
+                alt="Antweight BattleBot"
+                class="project-image"
+              >
+              <span class="project-title">Antweight BattleBot</span>
+            </a>
+          </li>
+
+          <!-- Row 3 -->
+          <li class="project-wide" id="barnacle">
+            <a href="barnacle.html" class="project-card wide-card">
+              <img
+                src="images/BarnacleRobotFrontPage.png"
+                alt="Robotics Barnacle Nauplius Model"
+                class="project-image wide-image"
+              >
+              <span class="project-title">Robotics Barnacle Nauplius Model</span>
+            </a>
+          </li>
+
+          <!-- Row 4 -->
+          <li class="projects-row" id="rocket-naloxone-row">
+            <a href="rocket.html" class="project-card" id="rocket">
+              <img
+                src="images/YOUR_ROCKET_IMAGE.png"
+                alt="Heat-Tracking Rocket Module"
+                class="project-image"
+              >
+              <span class="project-title">Heat-Tracking Rocket Module</span>
+            </a>
+            <a href="naloxone.html" class="project-card" id="naloxone">
+              <img
+                src="images/YOUR_NALOXONE_IMAGE.png"
+                alt="Naloxone Carrying Case"
+                class="project-image"
+              >
+              <span class="project-title">Naloxone Carrying Case</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+  </div>
+
+  <script>
+    // Scroll-spy: highlight the sidebar link for whichever project is in view
+    const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+    const targets = tocLinks
+      .map(link => document.getElementById(link.getAttribute('href').slice(1)))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // Pick the entry closest to the top of the viewport that's currently visible
+      const visible = entries.filter(e => e.isIntersecting);
+      if (visible.length > 0) {
+        const topMost = visible.reduce((a, b) =>
+          a.boundingClientRect.top < b.boundingClientRect.top ? a : b
+        );
+        setActive(topMost.target.id);
+      }
+    }, {
+      rootMargin: '-15% 0px -70% 0px', // triggers when a project is near the top third of the screen
+      threshold: 0
+    });
+
+    targets.forEach(el => observer.observe(el));
+
+    // Smooth scroll for the sidebar links
+    tocLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const id = link.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
