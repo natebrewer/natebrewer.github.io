@@ -74,7 +74,7 @@ p {
 /* Every project image shares this one fixed height, so cards
    always match regardless of their photo's natural proportions */
 :root {
-  --card-image-height: 220px;
+  --card-image-height: 300px;
 }
 
 /* Entire card clickable */
