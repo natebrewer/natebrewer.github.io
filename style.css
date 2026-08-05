@@ -251,6 +251,10 @@ p {
   padding: 0;
 }
 
+.contact-list li {
+  list-style: none;
+}
+
 .contact-list a {
   color: #888;
   text-decoration: none;
@@ -263,17 +267,18 @@ p {
 }
 
 .resume-button {
-  color: #f2f2f2;
+  color: #888;
   text-decoration: none;
   font-size: 0.8rem;
   padding: 0.4rem 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
 }
 
 .resume-button:hover {
+  color: #ccc;
   border-color: rgba(255, 255, 255, 0.5);
   background: rgba(255, 255, 255, 0.05);
 }
