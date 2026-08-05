@@ -1,30 +1,36 @@
 /* ===================== */
 /* Base / Theme          */
 /* ===================== */
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   background-color: #0e0e0e;
   color: #f2f2f2;
   font-family: Helvetica, Arial, sans-serif;
 }
+
 main {
-  max-width: 1100px;
+  max-width: none;
   margin: 0;
   padding: 80px 40px;
 }
+
 h1 {
   font-size: 2.2rem;
   font-weight: 500;
   margin-bottom: 0.5em;
 }
+
 .subtitle {
   font-size: 1rem;
   opacity: 0.7;
   margin-bottom: 3rem;
 }
+
 p {
   font-size: 1rem;
   line-height: 1.7;
@@ -35,12 +41,28 @@ p {
 /* ===================== */
 /* Nav / List Reset      */
 /* ===================== */
+
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 28px;
+  justify-content: start;
+}
+
+
+
+
 .nav-link {
   color: white;
   text-decoration: none;
   opacity: 0.8;
   font-size: 1.05rem;
 }
+
 .nav-link:hover {
   opacity: 1;
 }
@@ -48,18 +70,8 @@ p {
 /* ===================== */
 /* Projects Layout       */
 /* ===================== */
-/* All project cards flow left-to-right, wrapping as needed */
-.projects-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-}
 
-/* Row wrapper <li> becomes invisible to layout so its cards
-   act as direct flex items instead of being stuck together */
+/* Row of two cards */
 .projects-row {
   display: contents;
 }
@@ -72,6 +84,8 @@ p {
   width: 100%;
   max-width: 320px;
 }
+
+
 .project-image {
   width: 100%;
   aspect-ratio: 4 / 3;      /* pick a ratio that suits your images, e.g. 16/9 or 1/1 */
@@ -81,16 +95,20 @@ p {
   border: 1px solid rgba(255,255,255,0.06);
   transition: transform 0.18s ease;
 }
+
+
 .wide-image {
   width: 100%;
   aspect-ratio: auto;   /* undo the 4:3 crop from .project-image */
   object-fit: contain;  /* or just remove object-fit entirely */
   height: auto;
 }
+
 /* Hover lift ONLY (no glow / no color shift) */
 .project-card:hover .project-image {
   transform: translateY(-4px);
 }
+
 /* Title */
 .project-title {
   display: block;
@@ -99,13 +117,18 @@ p {
   text-align: center;
   opacity: 0.9;
 }
-/* Wide project: same width as two small cards + the gap between them */
+
 .project-wide {
+  grid-column: span 2;
   margin-top: 0;
 }
+
 .wide-card {
-  width: calc(320px * 2 + 28px);
   max-width: 100%;
+}
+
+.wide-image {
+  width: 100%;
 }
 
 .back,
@@ -114,36 +137,73 @@ p {
   text-decoration: none;
   opacity: 0.6;
 }
+
 .back:hover {
   opacity: 1;
 }
+
 .electrical-layout {
   display: flex;
   align-items: flex-start;
   gap: 20px;
 }
+
 .electrical-img {
   width: 250px;
   border-radius: 12px;
   border: 1px solid #333;
 }
+
 .electrical-layout p {
   flex: 1;
 }
+
 .linkedin-link {
   color: #3467A3;
   text-decoration: none; /* optional: removes underline */
 }
+
 .linkedin-link:hover {
   color: #274f7d; /* optional darker color on hover */
 }
 
-/* ===================== */
-/* Sidebar TOC (scroll-spy nav) */
-/* ===================== */
+
+/* ---- Sidebar TOC (scroll-spy nav) ---- */
 :root {
   --toc-width: 220px;
 }
+
+body {
+  margin: 0;
+}
+
+
+
+.toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.toc-link {
+  display: block;
+  text-decoration: none;
+  color: #888; /* your standard grey */
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.toc-link:hover {
+  color: #ccc; /* lighter shade on hover */
+}
+
+.toc-link.active {
+  color: #f2f2f2; /* lighter shade when in view */
+}
+
 .toc-sidebar {
   position: fixed;
   top: 0;
@@ -154,30 +214,11 @@ p {
   padding: 2rem 1rem;
   box-sizing: border-box;
 }
-.toc-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-.toc-link {
-  display: block;
-  text-decoration: none;
-  color: #888; /* your standard grey */
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
-}
-.toc-link:hover {
-  color: #ccc; /* lighter shade on hover */
-}
-.toc-link.active {
-  color: #f2f2f2; /* lighter shade when in view */
-}
+
 .main-content {
   margin-left: var(--toc-width);
 }
+
 .project-wide,
 .projects-row {
   scroll-margin-top: 1.5rem;
@@ -194,14 +235,17 @@ p {
     z-index: 10;
     background: inherit;
   }
+
   .main-content {
     margin-left: 0;
   }
+
   .toc-list {
     flex-direction: row;
     overflow-x: auto;
     gap: 1.25rem;
   }
+
   .toc-link {
     white-space: nowrap;
   }
