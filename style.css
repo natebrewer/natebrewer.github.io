@@ -53,16 +53,16 @@ p {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch; /* makes all cards in a row match the tallest one's height */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
   gap: 24px;
+  align-items: stretch; /* grid guarantees every card in a row matches the tallest one */
 }
 
 /* "About Me" is the first li in the list — keep it on its own row
-   so it doesn't steal width from the project card row */
+   so it doesn't steal a column from the project cards */
 .projects-list > li:first-child {
-  flex-basis: 100%;
+  grid-column: 1 / -1;
   margin-bottom: 0.5rem;
 }
 
@@ -72,8 +72,8 @@ p {
   display: contents;
 }
 
-/* Entire card clickable — flex column so the image can stretch
-   to fill whatever height the row ends up being (set by the wide card) */
+/* Entire card clickable — flex column so the image can fill
+   whatever height the grid row ends up being (set by the wide card) */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -85,7 +85,8 @@ p {
 }
 .project-image {
   width: 100%;
-  flex: 1 1 auto;   /* grow/shrink to match the card's stretched height */
+  height: 100%;      /* fills the remaining space in the card column below the title */
+  flex: 1 1 0;        /* 0 basis avoids the intrinsic-aspect-ratio sizing quirk */
   min-height: 0;
   object-fit: cover; /* crops instead of squishing */
   display: block;
@@ -111,12 +112,13 @@ p {
   text-align: center;
   opacity: 0.9;
 }
-/* Wide project: same width as two small cards + the gap between them */
+/* Wide project: the li is the actual grid item, so it spans 2 columns */
 .project-wide {
+  grid-column: span 2;
   margin-top: 0;
 }
 .wide-card {
-  width: calc(300px * 2 + 24px);
+  width: 100%;
   max-width: 100%;
 }
 
