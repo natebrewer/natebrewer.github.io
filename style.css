@@ -14,9 +14,9 @@ body {
 }
 
 main {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 80px 24px;
+  max-width: none;
+  margin: 0;
+  padding: 80px 40px;
 }
 
 h1 {
@@ -42,11 +42,19 @@ p {
 /* Nav / List Reset      */
 /* ===================== */
 
+
 .projects-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 28px;
+  justify-content: start;
 }
+
+
+
 
 .nav-link {
   color: white;
@@ -65,9 +73,7 @@ p {
 
 /* Row of two cards */
 .projects-row {
-  display: flex;
-  gap: 28px;
-  margin-top: 1.5rem;
+  display: contents;
 }
 
 /* Entire card clickable */
@@ -112,9 +118,9 @@ p {
   opacity: 0.9;
 }
 
-/* Wide project */
 .project-wide {
-  margin-top: 1.8rem;
+  grid-column: span 2;
+  margin-top: 0;
 }
 
 .wide-card {
