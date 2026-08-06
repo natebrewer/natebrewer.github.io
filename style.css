@@ -289,3 +289,41 @@ p {
     align-items: flex-start;
   }
 }
+
+
+/* ===================== */
+/* Floating Content Images (text wraps around) */
+/* ===================== */
+.img-float-left,
+.img-float-right {
+  width: 280px;
+  max-width: 45%;
+  border-radius: 12px;
+  border: 1px solid #333;
+  margin-bottom: 1rem;
+}
+.img-float-left {
+  float: left;
+  margin-right: 1.5rem;
+}
+.img-float-right {
+  float: right;
+  margin-left: 1.5rem;
+}
+
+/* Clear floats after each section so headings don't get squeezed */
+.clear-float {
+  clear: both;
+}
+
+/* On small screens, un-float and go full width so text isn't
+   squeezed into a narrow column next to the image */
+@media (max-width: 600px) {
+  .img-float-left,
+  .img-float-right {
+    float: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+  }
+}
