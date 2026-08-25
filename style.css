@@ -420,16 +420,14 @@ p {
   display: flex;
   gap: 20px;
   margin: 2rem 0;
+  width: 100%;
 }
 
 .video-row video {
-  width: 100%;
+  width: 50%;
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
   border: 1px solid #333;
-}
-
-@media (max-width: 700px) {
-  .video-row {
-    flex-direction: column;
-  }
+  display: block;
 }
