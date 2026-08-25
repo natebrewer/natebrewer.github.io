@@ -450,12 +450,14 @@ p {
 }
 
 .calc-img {
-  width: 280px;
+  width: 320px;
   flex-shrink: 0;
   border-radius: 12px;
   border: 1px solid #333;
   display: block;
 }
+
+
 
 .calc-row .spec-table {
   flex: 1;
