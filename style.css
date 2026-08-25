@@ -327,3 +327,53 @@ p {
     margin: 0 0 1rem 0;
   }
 }
+
+
+/* ===================== */
+/* Issue / Fix Columns   */
+/* ===================== */
+.fix-columns {
+  display: flex;
+  gap: 24px;
+  margin: 1.5rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.fix-col {
+  flex: 1;
+  min-width: 260px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.fix-col h4 {
+  margin-top: 0;
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.fix-col ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.fix-col li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 0.6rem;
+}
+
+.fix-col li::marker {
+  color: #555;
+}
+
+@media (max-width: 700px) {
+  .fix-columns {
+    flex-direction: column;
+  }
+}
