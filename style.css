@@ -442,4 +442,32 @@ p {
   border-radius: 0;
 }
 
+.calc-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 1.5rem 0 2rem;
+}
 
+.calc-img {
+  width: 280px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 1px solid #333;
+  display: block;
+}
+
+.calc-row .spec-table {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .calc-row {
+    flex-direction: column;
+  }
+  .calc-img {
+    width: 100%;
+  }
+}
