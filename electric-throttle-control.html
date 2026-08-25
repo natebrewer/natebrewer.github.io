@@ -66,7 +66,8 @@
   The choice of motor was given by what the company had on hand: a servo with roughly 220 oz. in of continuous torque in our RPM range. Our original design used a coupler directly between the throttle arm and the servo shaft, with the servo mounted on the intake manifold. A machined aluminum plate supported
   the servo in an aluminum brace, with vibration damping mounts affixing this assembly to the plate. A machined coupler attached the servo shaft to the throttle shaft, 
   with attachment points for a carburetor return spring and cable mounting for manual control. This design proved difficult to maintain concentricity with the servo shaft 
-  and alignment to the carburetor, coupled with heat and vibration from the engine itself. To solve this constellation of issues that arose, we returned to a cable drive system.
+  and alignment to the carburetor, forcing the torque loading much higher. Coupled with heat and vibration from the engine itself in this position, we decided to redesign for a cable and pulley
+  with the motor mounted elsewhere. Below are the calculations for the pulley radius. 
 <img src="images/IMG_1559.jpeg" class="img-float-right">
 </p>
   <table class="spec-table">
@@ -92,25 +93,18 @@
   
   
 
-
- Using the original throttle cable, we machined a pulley and broached a keyway to allow our servo to actuate the throttle using this cable. This allowed us to place the servo
+<p>
+ We targeted 20% RMS torque loading to ensure the temperature of the servo didn't rise to dangerous levels during long testing. 
+  Using the original throttle cable, we machined a pulley and broached a keyway to allow our servo to actuate the throttle using this cable. This allowed us to place the servo
   below the engine mount, shielding the servo from the majority of the engine heat and reducing vibration. With this new setup, we are able to hold the throttle at maximum
   position at 18% of the servo maximum torque, massively improved from the previous 75-85%. 
-
-
-
+</p>
 
 <h2>Control Loop</h2>
 <p>
    An onboard Hall effect sensor mounted to the crankshaft pulley provides an RPM estimate across a 5 second interval. The Arduino uses this RPM reading for closed loop control, with a PID 
   controller handling RPM changes. 
 </p>
-
-
-  <h2>Control Box</h2>
-  <p>The control box is essentially the brain of the entire system. 
-    
-  </p>
 
 <h2>Control Box</h2>
 <img src="images/IMG_1683.jpeg" class="img-float-left">
