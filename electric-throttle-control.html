@@ -62,10 +62,33 @@
   
 <h2 id="mechanical">Mechanical Design</h2>
 <p>
-  Our original design used a coupler directly between the throttle arm and the servo shaft, with the servo mounted on the intake manifold. A machined aluminum plate supported
+  The choice of motor was given by what the company had on hand: a servo with roughly 220 oz. in of continuous torque in our RPM range. Our original design used a coupler directly between the throttle arm and the servo shaft, with the servo mounted on the intake manifold. A machined aluminum plate supported
   the servo in an aluminum brace, with vibration damping mounts affixing this assembly to the plate. A machined coupler attached the servo shaft to the throttle shaft, 
   with attachment points for a carburetor return spring and cable mounting for manual control. This design proved difficult to maintain concentricity with the servo shaft 
   and alignment to the carburetor, coupled with heat and vibration from the engine itself. To solve this constellation of issues that arose, we returned to a cable drive system.
+
+  <table class="spec-table">
+  <thead>
+    <tr>
+      <th>Spring rate (lb/in)</th>
+      <th>Motor torque (oz-in)</th>
+      <th>Spring moment arm (in)</th>
+      <th>Target RMS load</th>
+      <th>Resulting pulley radius (in)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.57</td>
+      <td>223</td>
+      <td>1.5</td>
+      <td>20%</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+  
+  
   Using the original throttle cable, we machined a pulley and broached a keyway to allow our servo to actuate the throttle using this cable. This allowed us to place the servo
   below the engine mount, shielding the servo from the majority of the engine heat and reducing vibration. With this new setup, we are able to hold the throttle at maximum
   position at 18% of the servo maximum torque, massively improved from the previous 75-85%. 
