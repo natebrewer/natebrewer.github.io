@@ -31,6 +31,25 @@
   read and displayed by an onboard microcontroller. The microcontroller controls the throttle cable via a servo motor, using a Hall effect sensor mounted on the crankshaft pulley
   to allow closed-loop control. 
   </p>
+
+<div class="fix-columns">
+  <div class="fix-col">
+    <h4>Issues with the Old Design</h4>
+    <ul>
+      <li>RPM accuracy dependent on human controller</li>
+      <li>Requires constant human control over 8+ hour testing stages</li>
+      <li>Controller error causes inconsistent testing cycles</li>
+    </ul>
+  </div>
+  <div class="fix-col">
+    <h4>Implemented Fixes</h4>
+    <ul>
+      <li>Change to closed-loop PID control using a Hall Effect sensor</li>
+      <li>Fully autonomous control removes need for human oversight</li>
+      <li>Micro SD card testing profiles ensure consistent and repeatable testing</li>
+    </ul>
+  </div>
+</div>
   
 
 <h2 id="mechanical">Mechanical Design</h2>
