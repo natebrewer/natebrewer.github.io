@@ -102,7 +102,7 @@
   mounts from the original setup. Our new setup allows us to hold the throttle at maximum position at 18-22% of the servo maximum torque, massively improved from the previous 75-85%,  
   reducing sustained motor temperatures. The Hall Effect sensor is mounted in a sleeve within a lock collar, allowing precise and adjustable distance to the crankshaft. The crankshaft pulley had balancing holes previously drilled, 
   and we inserted a neodymium magnet into one of these holes. It sits in a small sleeve with Loctite holding it in place, with a ~1 mm air gap to the Hall Effect sensor. 
-  <br>
+  <br><br>
   The videos below show the limit switches at either end of the throttle travel. The servo we have is a step and direction servo that does not support min/max angle settings,
   and these limit switches detect when the throttle is at either extreme. These are connected to digital pins on the Arduino, which cancel any further positive or negative throttle commands from the PID loop respectively. 
   The integral summing of the PID controller is also nullified to prevent massive integral windup. 
