@@ -26,32 +26,40 @@
   <p>
   Ryzing Technologies maintains the ability to test extreme weather equipment in the extreme conditions they are designed to operate in. This includes extreme wind testing,
   which we accomplish using repurposed fan boat engines and propellers. Our pair of Cadillac 500 V8 engines are capable of sustaining 100 MPH laminar flow with driven aggregate,
-  sand, and water. To enhance the precision and repeatability of our testing, and allow for more specialized testing, I designed, fabricated, and installed a system to allow
+  sand, and water. 
+  </p>
+
+ <p>
+  The original design of this setup was a direct cable linkage from a remote control lever to the carburetor, with an RPM gauge and wind speed gauge providing readouts. A human
+   operator would stand at the control box and manually adjust the throttle to maintain the desired RPM and therefore wind speed based on the gauge readings. To enhance the precision and repeatability of our testing, and allow for more specialized testing, I designed, fabricated, and installed a system to allow
   testing profiles to be loaded and run autonomously on these engines. Testing profiles are saved as CSV files with target RPMs and durations on a micro SD card, where they are 
   read and displayed by an onboard microcontroller. The microcontroller controls the throttle cable via a servo motor, using a Hall effect sensor mounted on the crankshaft pulley
-  to allow closed-loop control. 
+  to allow closed-loop control.
   </p>
 
 <div class="fix-columns">
   <div class="fix-col">
     <h4>Issues with the Old Design</h4>
     <ul>
-      <li>RPM accuracy dependent on human controller</li>
-      <li>Requires constant human control over 8+ hour testing stages</li>
-      <li>Controller error causes inconsistent testing cycles</li>
-    </ul>
+  <li>Operator had to manually adjust throttle continuously for entire test duration</li>
+  <li>Required direct human presence for 8+ hour testing sessions</li>
+  <li>Wind speed consistency entirely dependent on operator reaction time and attention</li>
+  <li>No way to reproduce identical test conditions across separate testing sessions</li>
+  <li>Operator fatigue near a running V8 engine required shift changes and substaintial PPE</li>
+</ul>
   </div>
   <div class="fix-col">
     <h4>Implemented Fixes</h4>
     <ul>
-      <li>Change to closed-loop PID control using a Hall Effect sensor</li>
-      <li>Fully autonomous control removes need for human oversight</li>
-      <li>Micro SD card testing profiles ensure consistent and repeatable testing</li>
-    </ul>
+    <li>Closed-loop servo control automatically maintains target throttle position</li>
+    <li>Autonomous operation eliminates need for a dedicated operator during test runs</li>
+    <li>Hall effect sensor feedback holds RPM within tight tolerance via PID control</li>
+    <li>CSV-based test profiles allow custom and identical conditions to be repeated on demand</li>
+    <li>Operator can monitor and control tests remotely instead of standing by the engine</li>
+  </ul>
   </div>
 </div>
   
-
 <h2 id="mechanical">Mechanical Design</h2>
 <p>
   Our original design used a coupler directly between the throttle arm and the servo shaft, with the servo mounted on the intake manifold. A machined aluminum plate supported
