@@ -103,18 +103,16 @@
   reducing sustained motor temperatures. 
 </p>
 
-<h2>Control Loop</h2>
-<p>
-   An onboard Hall effect sensor mounted to the crankshaft pulley provides an RPM estimate across a 5 second interval. The Arduino uses this RPM reading for closed loop control, with a PID 
-  controller handling RPM changes. 
-</p>
+
 
 <h2>Control Box</h2>
 <img src="images/IMG_1683.jpeg" class="img-float-left">
 <p>
   The control box is essentially the brain of the entire system. It houses the Arduino,
-  the servo driver, and all the connectors for the Hall effect sensor and power distribution...
-  (keep writing — the text will wrap around the image)
+  the OLED display, SD card reader, and all the connectors for the Hall effect sensor and power distribution. A protoboard handles most of the power distribution with dedicated 5V and GND lines driven
+  by the Arduino for the peripherals. The display and buttons are mounted in milled slots with weatherproofing rubberized sealant to allow outdoor operation. The user interface
+  is displayed graphically on the OLED display, and shows current RPM, target RPM, loaded profile, and progress percentage through the run. The three buttons allow selection of profile, 
+  pause at current value, resume, and restart. Two killswitches for fuel and coil packs provide redundant safety measures coupled with the software control. 
 </p>
 
 <img src="images/IMG_1682.jpeg" class="img-float-right">
