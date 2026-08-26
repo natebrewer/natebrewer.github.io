@@ -171,7 +171,8 @@ and the maximum value is used to design the pulley.</p>
 
   
 <h2>Control Box</h2>
-<img src="images/IMG_1683.jpeg" class="img-float-left" style="width: 350px;"><img src="images/IMG_1682.jpeg" class="img-float-right"  style="width: 350px;">
+<img src="images/IMG_1683.jpeg" class="img-float-left" style="width: 350px;">
+<img src="images/IMG_1682.jpeg" class="img-float-right" style="width: 350px;">
 <p>
   The control box is essentially the brain of the entire system. It houses the Arduino,
   the OLED display, SD card reader, and all the connectors for the Hall effect sensor and power distribution. A protoboard handles most of the power distribution with dedicated 5V and GND lines driven
@@ -179,13 +180,11 @@ and the maximum value is used to design the pulley.</p>
   is displayed graphically on the OLED display, and shows current RPM, target RPM, loaded profile, and progress percentage through the run. The three buttons allow selection of profile, 
   pause at current value, resume, and restart. Two killswitches for fuel and coil packs provide redundant safety measures coupled with the software control. It is hand decorated with flames for personality. 
 </p>
-  
+
+<p>The block diagram displays the connections between each component to show broadly how the system functions. Not shown is the external power supply for the servo.</p>
+
+<img src="images/ControlBoxDiagram.png" alt="Electrical Block Diagram" style="width: 100%; max-width: 500px; height: auto; border-radius: 12px; border: 1px solid #333; display: block; margin: 0 auto;">
+
 <div class="clear-float"></div>
- <p>The block diagram displays the connections between each component to show broadly how the system functions. Not shown is the external power supply for the servo.</p> 
-
-<img src="images/ControlBoxDiagram.png" alt="Electrical Block Diagram" style="width: 100%; height: auto; border-radius: 12px; border: 1px solid #333;">
-
-
-
 
 
