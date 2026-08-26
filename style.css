@@ -548,3 +548,11 @@ p {
 .inline-list li::marker {
   color: #666;
 }
+
+.table-wrap {
+  overflow: hidden;
+}
+
+.table-wrap .spec-table {
+  width: 100%;
+}
