@@ -486,7 +486,7 @@ p {
   }
 }
 
-.spec-delta {
+.spec-table td.spec-delta {
   font-weight: 500;
   color: #509654;
 }
