@@ -173,13 +173,22 @@ and the maximum value is used to design the pulley.</p>
 <h2>Control Box</h2>
 <img src="images/IMG_1683.jpeg" class="img-float-left" style="width: 350px;">
 <img src="images/IMG_1682.jpeg" class="img-float-right" style="width: 350px;">
-<p>
-  The control box is essentially the brain of the entire system. It houses the Arduino,
-  the OLED display, SD card reader, and all the connectors for the Hall effect sensor and power distribution. A protoboard handles most of the power distribution with dedicated 5V and GND lines driven
-  by the Arduino for the peripherals. The display and buttons are mounted in milled slots with weatherproofing rubberized sealant to allow outdoor operation. The user interface
-  is displayed graphically on the OLED display, and shows current RPM, target RPM, loaded profile, and progress percentage through the run. The three buttons allow selection of profile, 
-  pause at current value, resume, and restart. Two killswitches for fuel and coil packs provide redundant safety measures coupled with the software control. It is hand decorated with flames for personality. 
+
+  <p>
+  The control box is essentially the brain of the entire system. The main controller is an Arduino Giga R1, as it provides sufficient computing power and digital IO pins for the necessary breakouts. 
+  It houses the Arduino, the OLED display, SD card reader, and all the connectors for the Hall effect sensor and power distribution. The necessary slots are milled from the sheet metal top, and are
+    each lined with a rubberized sealant. The OLED display and SD card reader are shrouded completely in clear acrylic and PETG respectively, and a gasket lines the baseplate of the box. Together, 
+    these changes make the system resistant to the elements which further expands testing capability. 
 </p>
+
+<ul class="inline-list">
+  <li>Main Controller: Arduino Giga R1</li>
+  <li>Data Input: Adafruit Micro SD Breakout</li>
+  <li>Display: 128x64 OLED i2c Display</li>
+  <li>Safety: Coil pack and fuel flow killswitch</li>
+</ul>
+
+<p>It is hand decorated with flames for personality.</p>
 
 <div class="clear-float"></div>
 
