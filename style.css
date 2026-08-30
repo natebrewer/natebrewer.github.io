@@ -641,3 +641,10 @@ p {
     width: 100%;
   }
 }
+
+.barnacle-caption {
+  font-size: 0.8rem;
+  opacity: 0.65;
+  line-height: 1.5;
+  margin: 0.5rem 0 0;
+}
