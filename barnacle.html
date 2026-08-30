@@ -28,10 +28,80 @@ This project investigates how simple mechanical systems can reproduce
 efficient locomotion observed in marine organisms.
 </p>
 
-
-<p class="details">
-Emphasis on biomechanics, minimal actuation, and experimental prototyping.
+<h2>Robotic Barnacle Nauplius</h2>
+<p>
+  Developed for Quantitative Plankton Ecology Lab at University of Washington, Seattle. Designed to replicate locomotion of micro-scale zooplankton for hydrodynamic force testing at similar Reynolds numbers. Expected lab testing in Winter 2025-2026.
 </p>
+<p>
+  Chan Lab: <a href="https://karenchanlab.org/research/" class="linkedin-link">karenchanlab.org/research</a>
+</p>
+
+<hr class="section-divider">
+
+<div class="barnacle-row">
+  <img src="images/carapace-render.jpg" class="barnacle-img" alt="Carapace CAD render">
+  <div class="barnacle-text">
+    <h3>Carapace and Electrical Circuit</h3>
+    <p>
+      The protoboard and battery are integrated beneath a biologically accurate carapace with mounting for the phototransistor. The hole at bottom right provides mounting for an arming switch which prevents unintentional burning of current to ground through the reference voltage divider. A 9V battery cage is screwed into place using the standoffs visible in the interior. M2 screw holes manage attachment of the base to the carapace, completing the robot. Waterproofing is provided by high infill 3D printing, an O-ring running the perimeter of the interface, and a rubber sealant spray on the exterior. A removable waterproof plug allows the battery to be charged with a USB-C cable for ease of access.
+    </p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="barnacle-row">
+  <img src="images/base-mechanism.jpg" class="barnacle-img" alt="Base and mechanical mechanism">
+  <div class="barnacle-text">
+    <h3>Base and Mechanical Mechanism</h3>
+    <p>
+      The locomotion is a periodic stroke pattern of oar-like appendages, which is replicated by 3 sets of metal arms. The arms consist of a hollow outer tube that extends from the pivot position outwards, and a smaller hollow inner tube that pivots within the outer shell. This was done to minimize any piston effects when moving in a viscous fluid. The mechanical assembly consists of three modules set in the base, each module consisting of a gear with a topper, an arm, and a slider. These are modular and they can be stacked in any order to study out of plane motion effects. The phase of each module is set by the relative position of the peg on the gear, which have been set to π/4 and π/2 radians out of phase from the normal. The motor drives all of the modules through a bevel gear set in a bearing at the top of the base.
+    </p>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<div class="barnacle-row-3">
+  <img src="images/breadboard-circuit.jpg" class="barnacle-img" alt="Circuit on breadboard">
+  <div class="barnacle-text">
+    <h3>Circuit Development</h3>
+    <p>
+      The light activation circuit consists of an LM311 comparator, BPW77NA phototransistor, IRLD120 MOSFET, and UVLO voltage regulator. The voltage threshold for the comparator is controlled by the blue potentiometer, which is compared to the voltage drop at the collector pin of the phototransistor. The voltage regulator provides undervoltage lockout and is tunable with integrated potentiometers.
+    </p>
+    <p>
+      <strong>At left:</strong> Circuit testing on a breadboard to tune resistor values and ensure accurate switching.<br>
+      <strong>At right:</strong> Circuit integrated on protoboard with header pins for voltage regulator and potentiometers to adjust voltage lockout/output.<br>
+      <strong>Below:</strong> Preliminary KiCad model of PCB of circuit.
+    </p>
+  </div>
+  <div class="barnacle-stack">
+    <img src="images/protoboard-top.jpg" alt="Protoboard top view">
+    <img src="images/protoboard-side.jpg" alt="Protoboard side view">
+  </div>
+</div>
+
+<div class="barnacle-row">
+  <img src="images/schematic.png" class="barnacle-img" alt="Circuit schematic">
+  <img src="images/pcb-layout.png" class="barnacle-img" alt="PCB layout" style="width: 500px;">
+</div>
+
+<hr class="section-divider">
+
+<div class="barnacle-row-3">
+  <img src="images/module-exploded.jpg" class="barnacle-img" alt="Mechanism module, version 2">
+  <div class="barnacle-text">
+    <h3>Mechanical Development</h3>
+    <p>
+      The mechanical component consists of these modules, which can be stacked in any order. Each module creates the motion for a single pair of arms, which pivot about a fixed point depending on the desired angular sweep. Wires set through the pins in the slider and gear toppers hold the arm on in an easily removable and low-profile way.
+    </p>
+    <p>
+      <strong>At left:</strong> Version 2 of the module, where the pivot positions are integrated into each module. This eliminates the reliance on long and potentially unstable pivot rods extending from the base. Also shown are the internal slider of the arm and the arm itself with pivot rod attached.<br>
+      <strong>At right:</strong> Version 1 of the module, which is currently implemented on the robot.
+    </p>
+  </div>
+  <img src="images/module-assembled.jpg" class="barnacle-img" alt="Mechanism module, version 1">
+</div>
 </main>
 </body>
 </html>
