@@ -22,9 +22,9 @@
   </iframe>
 </div>
 
-
+<h2>Project Overview</h2>
 <p>
-  Developed for Quantitative Plankton Ecology Lab at University of Washington, Seattle. Designed to replicate locomotion of micro-scale zooplankton for hydrodynamic force testing at similar Reynolds numbers. Expected lab testing in Winter 2026-2027.
+  Developed for collaborators in the Quantitative Plankton Ecology Lab at University of Washington, Seattle. Designed to replicate locomotion of micro-scale zooplankton for hydrodynamic force testing at similar Reynolds numbers. Expected lab testing in Winter 2026-2027.
   Submitted for membership to Sigma Xi. Further applications include exoplanetary exploration robotics and other viscous medium exploration.
 </p>
 <p>
@@ -62,7 +62,11 @@
   <div class="barnacle-text">
     <h3>Circuit Development</h3>
     <p>
-      The light activation circuit consists of an LM311 comparator, BPW77NA phototransistor, IRLD120 MOSFET, and UVLO voltage regulator. The voltage threshold for the comparator is controlled by the blue potentiometer, which is compared to the voltage drop at the collector pin of the phototransistor. The voltage regulator provides undervoltage lockout and is tunable with integrated potentiometers.
+      A light activation circuit was chosen for control of the model, due to the ease of remote access
+      once placed in situ with sensitive hydrodynamic sensors. The light activation circuit consists of an LM311 comparator, BPW77NA phototransistor, IRLD120 MOSFET, and UVLO voltage regulator. 
+      Voltage across the phototransistor changes due to ambient light conditions, which is compared to the threshold activation voltage. The threshold itself is adjustable with a potentiometer between 9V and GND. 
+      Our chosen regulator provides both undervoltage lockout and overvoltage protection to ensure consistent speed during testing. Further work may examine the feasibility of a digital microcontroller on board,
+      but space constraints and BLE attenuation through fluid media make this challenging. 
     </p>
     <p>
       <strong>At left:</strong> Circuit testing on a breadboard to tune resistor values and ensure accurate switching.<br>
@@ -77,10 +81,14 @@
 </div>
 
 <div class="barnacle-row">
-  <img src="images/schematic.png" class="barnacle-img" alt="Circuit schematic">
-  <img src="images/PCBtracediagram.png" class="barnacle-img" alt="PCB layout" style="width: 500px;">
+  <img src="images/schematic.png" class="barnacle-img" alt="Circuit schematic"style="width: auto; flex: 1;">
+  <img src="images/PCBtracediagram.png" class="barnacle-img" alt="PCB layout" style="width: auto; flex: 1;">
+    <img src="images/renderedPCB.png" class="barnacle-img" alt="Description" style="width: auto; flex: 1;">
 </div>
 
+
+
+  
 <hr class="section-divider">
 
 <div class="barnacle-row-3">
