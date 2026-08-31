@@ -36,13 +36,12 @@
 
 <h2 id="mechanical">Mechanical Design</h2>
 <p>
-  The main structural pieces of this bot are printed from high-infill PLA to take advantage of PLA's increased rigidity. PLA pieces are shown in white on the model currently. The walls, however,
-  are printed out of TPU. TPU is a type of plastic known as an elastomer, which can stretch and flex without experiencing permanent deformation. This is ideal for small-scale battlebot armor, 
-  as TPU can withstand hits which would shatter PLA pieces. The tradeoff is that the flexibility makes TPU non-ideal for maintaing structure. Therefore, I get the best of both worlds from the design
-  combination I am currently running. The rigid PLA top and bottom plates provide structral strength where they are unlikely to take direct hits from other bots, while the flexible TPU walls absorb these hits. 
+  The main structural piece of this bot is essentially a 95A TPU bucket. TPU is a flexible polymer which allows the bot to absorb some blows which would shatter PLA bots. 
+  PLA pieces are shown in white on the model currently. The tradeoff is that the flexibility makes TPU non-ideal for maintaing structure. Therefore, I get the best of both worlds from the design
+  combination I am currently running. The rigid PLA top and weapon mount supports provide structral strength in areas which are are unlikely to take direct hits from other bots, while the flexible TPU walls absorb these hits. 
 
   Mechanically, this robot is a 2 wheel drive vertical spinner design. This general category of design tends to do well in a mix of defense and offensive output, and I thought it would be a good
-  introductory style. For future designs, I would love to try an "eggbeater" design. 
+  introductory style.
 </p>
 
 <div class="model-container">
@@ -88,8 +87,10 @@ principal stress to simulate a "worst-case scenario." </p>
 
 
 <h3>Drivetrain</h3>
-<p>The drivetrain consists of two N20 brushed motors at 600 rpm. I am running metal gearboxes with a 3mm D-hole output shaft, which should help prevent gearbox damage in the event of a direct wheel hit. 
-The wheels are a PLA printed hub with elastomer tire, currently running 22mm wheel diameter. I may adjust this up to 34mm depending on how testing goes in the current configuration. </p>
+<p>The drivetrain consists of two N20 brushed motors at 600 rpm. These motors provide sufficient power to counteract the gyroscopic effects of the vertically spinning weapon. 
+They are driving 1.5 in closed-cell foam wheels, which offer several competitive advantages. Enemy weapons tend to cleave straight through the foam, removing some material 
+but leaving the wheel itself still functional. This is a distinct advantage over more solid plastic wheels, which tend to shatter or transfer force to the motor shaft upon impact. 
+The radius of the wheel is such that they maintain contact when upside down, allowing some movement in an inverted position. </p>
 
 <h2 id="electrical">Electrical System</h2>
 
