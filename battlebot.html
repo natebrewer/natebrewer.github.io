@@ -53,7 +53,7 @@
 <p>The weapon system of this bot is a 1/8th-inch-thick steel spinner driven by a Repeat Robotics 2004 direct drive motor. The spinner radius is 52mm, on the upper bound of what I could reasonably
 fit into the design. Vertical spinners do have some gyroscopic impact on driving and turning, but I really liked the damage vs. flinging versatility of vertical spinner designs. The motor is optioned 
 at 2800KV, giving me nominally approximately 20,000 RPM. Under free-spinning conditions, which assume a weightless spinner, this would give approximately 160 mph tip speed of the weapon. This will obviously
-be lower in practice, but is a good upper bound to keep in mind.Below is a simulated FEA event of the spinner colliding with a PLA bottom plate at its maximum RPM. The motor shaft and screws are modeled as rigid bodies, while the PLA plate is fixed at boundaries with element deletion based on 
+be lower in practice, but is a good upper bound to keep in mind. Below is a simulated FEA event of the spinner colliding with a PLA bottom plate at its maximum RPM. The motor shaft and screws are modeled as rigid bodies, while the PLA plate is fixed at boundaries with element deletion based on 
 principal stress to simulate a "worst-case scenario." </p>
 
 
@@ -69,16 +69,19 @@ principal stress to simulate a "worst-case scenario." </p>
 <div class="diagram-video-row">
   <table class="spec-table video-spec-table">
     <tbody>
-      <tr><th>Machine</th><td>Fill in</td></tr>
-      <tr><th>Tool</th><td>Fill in</td></tr>
-      <tr><th>Feed Rate</th><td>Fill in</td></tr>
+      <tr><th>Machine</th><td>Haas Mini Mill</td></tr>
+      <tr><th>Tooling</th><td>3/4 in Endmill, 1/4 in Twist Drill</td></tr>
+      <tr><th>Material</th><td>4140 Chromoly</td></tr>
+       <tr><th>Operation</th><td>3-axis Milling</td></tr>
     </tbody>
   </table>
 
   <table class="spec-table video-spec-table">
     <tbody>
       <tr><th>Stress Representation</th><td>Von Mises</td></tr>
-      <tr><th>Initial Angular Velocity</th><td>Fill in</td></tr>
+      <tr><th>Initial Angular Velocity</th><td>18,000 RPM</td></tr>
+      <tr><th>Analysis Type</th><td>Explicit Dynamic</td></tr>
+      <tr><th>Element Deletion Criteria</th><td>Principal Stress</td></tr>
     </tbody>
   </table>
 </div>
