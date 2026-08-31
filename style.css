@@ -596,7 +596,7 @@ p {
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  margin: 2rem 0;
+  margin:2rem 0 0.5rem;
 }
 
 .barnacle-row-3 .barnacle-img {
