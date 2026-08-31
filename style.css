@@ -655,3 +655,22 @@ p {
   line-height: 1.5;
   margin: 0.2rem 0 2rem;
 }
+.barnacle-caption-split {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  line-height: 1.5;
+  margin: 0.5rem 0 2rem;
+}
+
+.barnacle-caption-split span:first-child {
+  text-align: left;
+  flex: 1.6;
+}
+
+.barnacle-caption-split span:last-child {
+  text-align: right;
+  flex: 1;
+}
