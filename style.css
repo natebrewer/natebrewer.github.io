@@ -693,7 +693,7 @@ p {
   display: flex;
   gap: 20px;
   margin: 2rem 0;
-  height: 100px;
+  height: 200px;
 }
 
 .quad-row img {
