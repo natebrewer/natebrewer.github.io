@@ -717,3 +717,25 @@ p {
     height: 200px;
   }
 }
+
+.img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-shrink: 0;
+  width: 380px;
+}
+
+.img-stack img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #333;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .img-stack {
+    width: 100%;
+  }
+}
