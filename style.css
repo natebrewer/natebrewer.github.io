@@ -776,7 +776,7 @@ p {
 
 .video-stack-box {
   position: relative;
-  width: 75%;
+  width: 50%;
   aspect-ratio: 16 / 9;
   background: #000;
   border-radius: 12px;
