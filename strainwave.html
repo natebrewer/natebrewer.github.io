@@ -45,31 +45,53 @@
       deforming by one tooth width in each direction along the major axis and providing the transfer points. My design utilizes a single roller bearing, but due to the 
       ANSYS simulation results I may upgrade this to 3 per side to distribute the force more evenly. </p>
 
-      <h2 id="fea">Finite Element Analysis</h2>
-      <div class="video-stack-row">
-        <div class="video-stack-box">
-          <iframe
-            src="https://www.youtube.com/embed/QlgCueyaN8I?autoplay=1&mute=1&loop=1&playlist=QlgCueyaN8I"
-            frameborder="0"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-stack-caption">ANSYS Transient Structural Deformation Results.</p>
-        <div class="video-stack-box">
-          <iframe
-            src="https://www.youtube.com/embed/ar3HJit7WzY?autoplay=1&mute=1&loop=1&playlist=ar3HJit7WzY"
+<h2 id="fea">Finite Element Analysis</h2>
 
-            frameborder="0"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-stack-caption">ANSYS Transient Structural Von Mises Stress Results.</p>
-      </div>
-
-    </main>
+<div class="video-result-row">
+  <div class="video-stack-box">
+    <iframe
+      src="https://www.youtube.com/embed/QlgCueyaN8I?autoplay=1&mute=1&loop=1&playlist=QlgCueyaN8I"
+      frameborder="0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
+  <div class="video-result-table">
+    <table class="spec-table">
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Result Type</td><td>Total Deformation</td></tr>
+        <tr><td>Peak Deformation</td><td class="spec-delta"1.0195 mm</td></tr>
+        <tr><td>Minimum deformation</td><td>0 mm</td></tr>
+        <tr><td>Simulation time</td><td>26.3 ms</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p>ANSYS Transient Structural Deformation Results.</p>
+
+<div class="video-result-row">
+  <div class="video-stack-box">
+    <iframe
+      src="https://www.youtube.com/embed/QlgCueyaN8I?autoplay=1&mute=1&loop=1&playlist=QlgCueyaN8I"
+      frameborder="0"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <div class="video-result-table">
+    <table class="spec-table">
+      <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Result Type</td><td>Equivalent (von Mises) Stress</td></tr>
+        <tr><td>Peak Stress</td><td class="spec-delta">96.8 kPa</td></tr>
+        <tr><td>Minimum Stress</td><td>0.2 Pa</td></tr>
+        <tr><td>Factor of Safety</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p>ANSYS Transient Structural Stress Results.</p>
 
   <script>
     const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
