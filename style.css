@@ -828,3 +828,26 @@ p {
     flex-direction: column;
   }
 }
+
+
+.dual-row {
+  display: flex;
+  gap: 20px;
+  margin: 2rem 0;
+}
+
+.dual-row img {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #333;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .dual-row {
+    flex-direction: column;
+  }
+}
