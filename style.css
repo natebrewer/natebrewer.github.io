@@ -888,41 +888,41 @@ p {
 
 .height-row {
   display: flex;
-  justify-content: center;
   gap: 20px;
-  height: 450px;
   margin: 2rem 0 1rem;
 }
 
 .height-row img,
 .height-row iframe {
-  height: 100%;
+  flex-basis: 0;
   min-width: 0;
+  width: 100%;
+  height: auto;
   border-radius: 12px;
   border: 1px solid #333;
   display: block;
 }
 
 .height-row img {
-  width: auto;
+  flex-grow: 0.75;      /* photo shape, 3:4 */
+  aspect-ratio: 3 / 4;
   object-fit: cover;
 }
 
 .height-row iframe {
+  flex-grow: 0.5625;    /* video shape, 9:16 */
   aspect-ratio: 9 / 16;
-  flex-shrink: 0;
 }
 
 @media (max-width: 800px) {
   .height-row {
     flex-direction: column;
     align-items: center;
-    height: auto;
   }
   .height-row img,
   .height-row iframe {
+    flex: none;
     width: 100%;
     max-width: 400px;
-    height: auto;
   }
 }
